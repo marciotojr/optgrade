@@ -1,0 +1,38 @@
+#device_frame {
+            margin: 0 auto;padding-top: 4em;text-align: center;
+        }
+        .ipad-frame-demo {
+            background: #333;
+            border-radius: 3em;
+            margin: 0 auto;
+            padding: 5em;
+            text-align: center;
+            width: 768px;
+        }
+        .ipad-l-frame-demo {
+            background: #333;
+            border-radius: 3em;
+            margin: 0 auto;
+            padding: 5em;
+            width: 1024px;
+        }
+
+        .iphone-frame-demo {
+            background: #333;
+            border-radius: 3em;
+            height: 580px;
+            margin: 0 auto;
+            padding: 5em 3em;
+            width: 320px;
+        }
+        .iphone-l-frame-demo {
+            background: #333;
+            border-radius: 3em;
+            height: 320px;
+            margin: 0 auto;
+            padding: 2em 5em;
+            width: 600px;
+        }
+              li.purchase, li.remove_frame {
+                    padding-top: 10px;
+                }		

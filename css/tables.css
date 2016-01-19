@@ -1,0 +1,31 @@
+.strippedHover tr:nth-child(even) {background-color: #f2fff2}
+.strippedHover tr:nth-child(odd) {background-color: #cfffcf}
+.strippedHover tr:hover {background-color: #afffaf}
+.strippedHover table tr:nth-child(even) {background-color: #eeeeee}
+.strippedHover table tr:nth-child(odd) {background-color: #f2f2f2}
+.strippedHover table tr:hover {background-color: #aaaaaa}
+.strippedHover th {
+    background-color: #468847;
+    color: white;
+}
+.strippedHover th, td {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.strippedHover{
+	width: 100%
+}
+
+.subTable{
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+.subTable td{
+	width: 100%;
+    padding: 5x;
+    text-align: center;
+    vertical-align: middle;
+}

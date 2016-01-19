@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Case</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap-tree-master/bootstrap-combined.min.css">
+<link rel="stylesheet" href="tables.css">
+</head>
+<body>
+<div class="topMenu">
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">optGrade</a>
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivo <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Novo Projeto</a></li>
+				<li><a href="#">Abrir Projeto</a></li>
+				<li><a href="#">Fechar</a></li>
+			</ul>
+			</li>
+			<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros Basicos <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Polos</a></li>
+				<li><a href="#">Disciplinas</a></li>
+				<li><a href="#">Turmas</a></li>
+				<li><a href="#">Professores</a></li>
+				<li><a href="#">Salas</a></li>
+				<li><a href="#">Horarios</a></li>
+				<li><a href="#">Preferencia de Horarios</a></li>
+				<li><a href="#">Preferencia de Disciplinas</a></li>
+			</ul>
+			</li>
+			<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatorios <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Horario x Professor</a></li>
+				<li><a href="#">Professore x Turma</a></li>
+				<li><a href="#">Turma x Sala</a></li>
+				<li><a href="#">Turma x Dia</a></li>
+				<li><a href="#">Turma x Horario x Professor</a></li>
+			</ul>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+	</div>
+</div>
+</nav>
+</div>
+<div class="lateralMenu">
+	<div class="tree">
+		<ul>
+			<li>
+			<span><i class="icon-calendar"></i>Cadastros</span>
+			<ul>
+				<li>
+				<span class="badge badge-success"><i class="icon-minus-sign"></i>Polos</span>
+				<ul>
+					<li>
+					<a href=""> Juiz de Fora</a>
+					</li>
+					<li>
+					<a href=""> Governador Valadares</a>
+					</li>
+				</ul>
+				</li>
+				<li>
+				<span class="badge badge-success"><i class="icon-minus-sign"></i> Professores</span>
+				<ul>
+					<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Juiz de Fora</span>
+					<ul>
+					<li>
+					<a href="">Jos&eacute; Maria</a>
+					</li>
+					<li>
+					<a href="">Victor Stroele</a>
+					</li>
+					</li>
+					</ul>
+				</ul>
+				<ul>
+					<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Governador Valadares</span>
+					<ul>
+					<li>
+					<a href="">Beto</a>
+					</li>
+					<li>
+					<a href="">Ricardo</a>
+					</li>
+					</li>
+					</ul>
+				</ul>
+				</li>
+				</li>
+				</ul>
+			<li>
+			<span><i class="icon-calendar"></i> Grades Geradas</span>
+			<ul>
+								<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Grade 1</span>
+
+				<ul>
+				<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Professores</span>
+				<ul>
+					<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Juiz de Fora</span>
+					<ul>
+					<li>
+					<a href="">Jos&eacute; Maria</a>
+					</li>
+					<li>
+					<a href="">Victor Stroele</a>
+					</li>
+					</li>
+					</ul>
+				</ul>
+				<ul>
+					<li><span class="badge badge-success"><i class="icon-minus-sign"></i> Governador Valadares</span>
+					<ul>
+					<li>
+					<a href="">Beto</a>
+					</li>
+					<li>
+					<a href="">Ricardo</a>
+					</li>
+					</li>
+					</ul>
+				</ul>
+				</li>
+		</ul>
+		<script type="text/javascript">
+	  $(function () {
+		$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+		$('.tree li.parent_li > span').on('click', function (e) {
+			var children = $(this).parent('li.parent_li').find(' > ul > li');
+			if (children.is(":visible")) {
+				children.hide('fast');
+				$(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+			} else {
+				children.show('fast');
+				$(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+			}
+			e.stopPropagation();
+		});
+	});
+	</script>
+	</div>
+	<div class="content">
+		<form>
+			<form>
+			<fieldset>
+			<legend>Banco de Dados - DCC015</legend>
+			<fieldset class="form-group">
+			<table class="strippedHover">
+			<tr><th>Turma</th><th>Professor</th><th>Sala</th><th colspan=3>Horarios</th></tr>
+			<tr><td>A</td><td>Victor Stroele</td><td>S202</td><td class="subTable">
+			<table>
+			<tr><td>Segunda</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			</table>
+			</td></tr>
+			<tr><td>A</td><td>Victor Stroele</td><td>S202</td><td class="subTable">
+			<table>
+			<tr><td>Segunda</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			</table>
+			</td></tr>
+			<tr><td>A</td><td>Victor Stroele</td><td>S202</td><td class="subTable">
+			<table>
+			<tr><td>Segunda</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			</table>
+			</td></tr>
+			<tr><td>A</td><td>Victor Stroele</td><td>S202</td><td class="subTable">
+			<table>
+			<tr><td>Segunda</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			<tr><td>Quarta</td><td>08:00</td><td>10:00</td></tr>
+			</table>
+			</td></tr>
+			</table>
+			</fieldset>
+			<fieldset>
+			<input type="submit" class="btn btn-primary" value="Editar">
+			</fieldset>
+			</form>
+			</form>
+	</div>
+</div>
+</body>
+</html>
