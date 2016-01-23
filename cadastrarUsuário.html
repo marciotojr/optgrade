@@ -74,6 +74,16 @@ body {
     background-size: 16px 80px;
 }
 
+.login-block input#password {
+    background: #fff url('Senha.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('Senha.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
 .login-block input:active, .login-block input:focus {
     border: 1px solid #4C83A8;
 }
@@ -102,36 +112,60 @@ body {
 </head>
 
 <body>
-	
-	<div class="logo"></div>
-	<form id="fEmailConfirmacao" name="fEmailConfirmacao" action="emailconfirmacaoenviado.html" method="post" onSubmit="return valida_email_confirmacao(this)">
-		<div class="login-block">
-			<h1><font color="#4C83A8">Esqueci Minha Senha</font></h1>
-			<h5><font color="#4C83A8">Informe seu email:</font></h5>
-			<input type="text" value="" placeholder="Email" id="email" />
-			<button>Enviar Email</button>
-		</div>
+
+<div class="logo"></div>
+<div class="login-block">
+	<form id="fNovoUsuario" name="fNovoUsuario" method="post" action="emailNovoUsuario.html" onSubmit="return valida_novo_usuario(this)">
+    	<h1><font color="#4C83A8">Cadastro Novo Usuário</font></h1>
+		<input type="text" value="" placeholder="Username" id="username" size="35"/>
+		<input type="password" value="" placeholder="Password" id="password" size="35"/>
+		<input type="text" value="" placeholder="Email" id="email" />
+		<button>Registrar</button>
+		<br><br>
 	</form>
+	<form id="fVoltar" name="fVoltar" method="post" action="login.html" >
+		<button onClick="login.html">Voltar</button>
+	</form>	
+</div>
 
 <script type="text/javascript" language="javascript">
-	function valida_email_confirmacao ()
+	function valida_novo_usuario ()
 	{
-		if(document.getElementById("email").value.length == 0)
-		{			                   
-			document.getElementById("email").focus();
-			alert("Os campos abaixo são de preenchimento obrigatório: \n Campo Email obrigatório;");
+		var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
+		if(document.getElementById("username").value.length == 0 || 
+		   document.getElementById("password").value.length == 0 || 
+		   document.getElementById("email").value.length == 0 || 
+		   document.getElementById("email").value.search("@") < 1 || 
+		   document.getElementById("email").value.search(".com") < 4
+		   )
+		{
+			if(document.getElementById("username").value.length == 0)
+			{
+				msgErro = msgErro + "\n" + "Campo Username é obrigatório;";
+			}
+
+			if(document.getElementById("password").value.length == 0)
+			{
+				msgErro = msgErro + "\n" + "Campo Password é obrigatório;";
+			}             
+			
+			if(document.getElementById("email").value.length == 0)
+			{
+				msgErro = msgErro + "\n" + "Campo Email é obrigatório;";
+			}    
+			   
+			if(document.getElementById("email").value.search("@") < 1 || document.getElementById("email").value.search(".com") < 4)
+			{
+				msgErro = msgErro + "\n" + "Email informado é inválido. \nGentileza verificar e reinformar.";
+			}
+			
+			document.getElementById("username").focus();
+			alert(msgErro);
 			return false;
-		}
-		
-		if((document.getElementById("email").value.search("@") < 1) || (document.getElementById("email").value.search(".com") < 4))
-		{			                   
-			document.getElementById("email").focus();
-			alert("Email informado é inválido. \nGentileza verificar e reinformar.");
-			return false;
-		}
+		}		
 	}
-</script>	
-	
+</script>
+
 </body>
 
 </html>

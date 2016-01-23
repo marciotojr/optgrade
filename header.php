@@ -58,8 +58,8 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<li><a><span class="glyphicon glyphicon-user"></span> Bem Vindo</a></li>
+			<li><a href="index.html"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
 		</ul>
 	</div>
 </div>

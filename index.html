@@ -115,13 +115,40 @@ body {
 
 <div class="logo"></div>
 <div class="login-block">
-    <h1><font color="#4C83A8">Bem Vindo</font></h1>
-    <input type="text" value="" placeholder="Username" id="username" />
-    <input type="password" value="" placeholder="Password" id="password" />
-	<a href="esquecisenha.html"> <font size="2">Esqueci minha senha</font> </a>
-	<br><br>
-        <button type="submit">Entrar</button>
+	<form id="fLogin" name="fLogin" method="post" action="http://localhost/optgrade/main.php" onSubmit="return valida_login(this)">
+    	<h1><font color="#4C83A8">Bem Vindo</font></h1>
+		<input type="text" value="" placeholder="Username" id="username" size="35"/>
+		<input type="password" value="" placeholder="Password" id="password" size="35"/>
+		<a href="esquecisenha.html"> <font size="2">Esqueci minha senha</font> </a>
+		<br>
+		<a href="cadastrarUsuário.html"> <font size="2">Cadastrar Usuário</font> </a>
+		<br><br>
+		<button>Entrar</button>
+	</form>
 </div>
+
+<script type="text/javascript" language="javascript">
+	function valida_login ()
+	{
+		var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
+		if(document.getElementById("username").value.length == 0 || document.getElementById("password").value.length == 0)
+		{
+			if(document.getElementById("username").value.length == 0)
+			{
+				msgErro = msgErro + "\n" + "Campo Username é obrigatório;";
+			}
+
+			if(document.getElementById("password").value.length == 0)
+			{
+				msgErro = msgErro + "\n" + "Campo Password é obrigatório;";
+			}                    
+			document.getElementById("username").focus();
+			alert(msgErro);
+			return false;
+		}
+	}
+</script>
+
 </body>
 
 </html>

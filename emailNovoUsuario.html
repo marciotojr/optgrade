@@ -65,12 +65,12 @@ body {
 }
 
 .login-block input#username {
-    background: #fff url('Usuario.png') 20px top no-repeat;
+    background: #fff url('https://copy.com/YdzvH7TlXoMnXkkJ') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#username:focus {
-    background: #fff url('Usuario.png') 20px bottom no-repeat;
+    background: #fff url('https://copy.com/YdzvH7TlXoMnXkkJ') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
@@ -102,36 +102,14 @@ body {
 </head>
 
 <body>
-	
-	<div class="logo"></div>
-	<form id="fEmailConfirmacao" name="fEmailConfirmacao" action="emailconfirmacaoenviado.html" method="post" onSubmit="return valida_email_confirmacao(this)">
+	<form action="login.html" method="post">
+		<div class="logo"></div>
 		<div class="login-block">
-			<h1><font color="#4C83A8">Esqueci Minha Senha</font></h1>
-			<h5><font color="#4C83A8">Informe seu email:</font></h5>
-			<input type="text" value="" placeholder="Email" id="email" />
-			<button>Enviar Email</button>
+			<h1><font color="#4C83A8">cadastro realizado.  </font></h1>
+			<h1><font color="#4C83A8">realize o login para acesso!</font></h1>
+			<button>Voltar para Login</button>
 		</div>
-	</form>
-
-<script type="text/javascript" language="javascript">
-	function valida_email_confirmacao ()
-	{
-		if(document.getElementById("email").value.length == 0)
-		{			                   
-			document.getElementById("email").focus();
-			alert("Os campos abaixo são de preenchimento obrigatório: \n Campo Email obrigatório;");
-			return false;
-		}
-		
-		if((document.getElementById("email").value.search("@") < 1) || (document.getElementById("email").value.search(".com") < 4))
-		{			                   
-			document.getElementById("email").focus();
-			alert("Email informado é inválido. \nGentileza verificar e reinformar.");
-			return false;
-		}
-	}
-</script>	
-	
+	<form>
 </body>
 
 </html>
