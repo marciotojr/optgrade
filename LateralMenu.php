@@ -119,7 +119,12 @@ if (!$conn)
         <li><span class="badge badge-success" onclick="changeContent('listaTurmas.php')"><i class="icon-minus-sign"></i>Turmas</span>
             <ul>
                 <?php
-                $sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo, t.turma as turma, dep.sigla as sigla, dep.nome as departamento FROM departamento dep, turma t, departamento_polo dp, polo po, disciplina dis Where dep.id=dp.id_departamento and dis.id_departamento_polo=dp.id and po.id=dp.id_polo and t.id_disciplina=dis.id and t.id_disciplina=dis.id ORDER BY polo, departamento, disciplina ASC";
+                $sql = "SELECT t.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo,"
+                        . " t.turma as turma, dep.sigla as sigla, dep.nome as departamento "
+                        . "FROM departamento dep, turma t, departamento_polo dp, polo po, disciplina dis "
+                        . "WHERE dep.id=dp.id_departamento and dis.id_departamento_polo=dp.id "
+                        . "and po.id=dp.id_polo and t.id_disciplina=dis.id and t.id_disciplina=dis.id "
+                        . "ORDER BY polo, departamento, disciplina ASC";
                 $result = mysqli_query($conn, $sql);
                 $cidade = "";
                 $departamento = "";

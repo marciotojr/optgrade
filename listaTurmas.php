@@ -23,8 +23,8 @@
                     if (mysqli_num_rows($result) > 0) {
                       while ($disciplina = mysqli_fetch_assoc($result)) {
                         extract($disciplina, EXTR_OVERWRITE);
-                        echo '<tr><td><a href="#" onclick="changeContent(\'gerenciarDisciplina.php?id=' . $id . '\')"><span class="badge badge-edit"><i class="glyphicon glyphicon-pencil"></i></span></a>'
-                        . '<a href="#" onclick="changeContent(\'excluirDisciplina.php?id=' . $id . '\')"><span class="badge badge-important"><i class="glyphicon glyphicon-remove"></i></span></a></td>';
+                        echo '<tr><td><a href="#" onclick="changeContent(\'gerenciarTurma.php?id=' . $id . '\')"><span class="badge badge-edit"><i class="glyphicon glyphicon-pencil"></i></span></a>'
+                        . '<a href="#" onclick="changeContent(\'excluirTurma.php?id=' . $id . '\')"><span class="badge badge-important"><i class="glyphicon glyphicon-remove"></i></span></a></td>';
                         echo '<td>' . $codigo . '</td><td>' . $turma. '</td><td>' . $nome . '</td><td>' . $departamento . '</td><td>' . $polo . '</td></tr>';
                       }
                     } else {

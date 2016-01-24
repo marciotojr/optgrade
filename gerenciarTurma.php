@@ -16,9 +16,9 @@ if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
 
-$sql = "SELECT t.turma as turma, d.id as disciplina , dep.id as departamento, dp.id as dp "
+$sql = "SELECT t.id as id, t.turma as turma, d.id as disciplina , dep.id as departamento, dp.id as dp "
         . "FROM turma t, disciplina d, departamento_polo dp, departamento dep "
-        . "WHERE t.id_disciplina=d.id and d.id_departamento_polo = dp.id and dp.id_departamento = dep.id and d.id=" . $id;
+        . "WHERE t.id_disciplina=d.id and d.id_departamento_polo = dp.id and dp.id_departamento = dep.id and t.id=" . $id;
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
