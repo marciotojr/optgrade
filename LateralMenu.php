@@ -24,7 +24,8 @@ if (!$conn)
 </script>
 <div class="lateralMenu">
     <div class="tree">
-        <ul>
+        <legend>Projeto X</legend>
+        <ul>            
             <li>
                 <span><i class="icon-calendar"></i>Cadastros</span>
                 <ul>

@@ -28,9 +28,9 @@
 			<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivo <span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="#">Novo Projeto</a></li>
+				<li><a href="novoProjeto.php">Novo Projeto</a></li>
 				<li><a href="#">Abrir Projeto</a></li>
-				<li><a href="#">Fechar</a></li>
+				<li><a href="principal.php">Fechar</a></li>
 			</ul>
 			</li>
 			<li class="dropdown">
