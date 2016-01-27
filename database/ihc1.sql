@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Jan-2016 às 23:30
+-- Generation Time: 27-Jan-2016 às 01:55
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -28,7 +28,6 @@ USE `ihc1`;
 -- Estrutura da tabela `departamento`
 --
 
-DROP TABLE IF EXISTS `departamento`;
 CREATE TABLE `departamento` (
   `id` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
@@ -49,7 +48,6 @@ INSERT INTO `departamento` (`id`, `nome`, `sigla`) VALUES
 -- Estrutura da tabela `departamento_polo`
 --
 
-DROP TABLE IF EXISTS `departamento_polo`;
 CREATE TABLE `departamento_polo` (
   `id_polo` int(11) NOT NULL,
   `id_departamento` int(11) NOT NULL,
@@ -68,10 +66,33 @@ INSERT INTO `departamento_polo` (`id_polo`, `id_departamento`, `id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `dia_semana`
+--
+
+CREATE TABLE `dia_semana` (
+  `id` int(11) NOT NULL,
+  `dia` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `dia_semana`
+--
+
+INSERT INTO `dia_semana` (`id`, `dia`) VALUES
+(1, 'Domingo'),
+(2, 'Segunda'),
+(3, 'Terca'),
+(4, 'Quarta'),
+(5, 'Quinta'),
+(6, 'Sexta'),
+(7, 'Sabado');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `disciplina`
 --
 
-DROP TABLE IF EXISTS `disciplina`;
 CREATE TABLE `disciplina` (
   `id` int(11) NOT NULL,
   `codigo` varchar(10) NOT NULL,
@@ -91,10 +112,32 @@ INSERT INTO `disciplina` (`id`, `codigo`, `nome`, `id_departamento_polo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `horario`
+--
+
+CREATE TABLE `horario` (
+  `id_dia` int(11) NOT NULL,
+  `id_turma` int(11) NOT NULL,
+  `inicio` int(11) NOT NULL,
+  `fim` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `horario`
+--
+
+INSERT INTO `horario` (`id_dia`, `id_turma`, `inicio`, `fim`) VALUES
+(2, 2, 8, 10),
+(4, 2, 8, 10),
+(2, 3, 14, 18),
+(5, 4, 8, 12);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `polo`
 --
 
-DROP TABLE IF EXISTS `polo`;
 CREATE TABLE `polo` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
@@ -116,7 +159,6 @@ INSERT INTO `polo` (`id`, `nome`, `cidade`, `uf`) VALUES
 -- Estrutura da tabela `professor`
 --
 
-DROP TABLE IF EXISTS `professor`;
 CREATE TABLE `professor` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -145,7 +187,6 @@ INSERT INTO `professor` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `uf`, `ce
 -- Estrutura da tabela `sala`
 --
 
-DROP TABLE IF EXISTS `sala`;
 CREATE TABLE `sala` (
   `id` int(11) NOT NULL,
   `codigo` varchar(10) NOT NULL,
@@ -157,7 +198,8 @@ CREATE TABLE `sala` (
 --
 
 INSERT INTO `sala` (`id`, `codigo`, `id_polo`) VALUES
-(1, 'S201', 1);
+(1, 'S201', 1),
+(2, '2135', 2);
 
 -- --------------------------------------------------------
 
@@ -165,7 +207,6 @@ INSERT INTO `sala` (`id`, `codigo`, `id_polo`) VALUES
 -- Estrutura da tabela `turma`
 --
 
-DROP TABLE IF EXISTS `turma`;
 CREATE TABLE `turma` (
   `id` int(11) NOT NULL,
   `id_disciplina` int(11) NOT NULL,
@@ -181,7 +222,7 @@ CREATE TABLE `turma` (
 INSERT INTO `turma` (`id`, `id_disciplina`, `turma`, `id_professor`, `id_sala`) VALUES
 (2, 1, 'A', 1, 1),
 (3, 2, 'A', 4, 1),
-(4, 3, 'B', 3, 1);
+(4, 3, 'B', 2, 2);
 
 --
 -- Indexes for dumped tables
@@ -202,11 +243,24 @@ ALTER TABLE `departamento_polo`
   ADD KEY `fk2` (`id_departamento`);
 
 --
+-- Indexes for table `dia_semana`
+--
+ALTER TABLE `dia_semana`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `disciplina`
 --
 ALTER TABLE `disciplina`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fkdp` (`id_departamento_polo`);
+
+--
+-- Indexes for table `horario`
+--
+ALTER TABLE `horario`
+  ADD KEY `fk_th` (`id_turma`),
+  ADD KEY `fk_hd` (`id_dia`);
 
 --
 -- Indexes for table `polo`
@@ -253,6 +307,11 @@ ALTER TABLE `departamento`
 ALTER TABLE `departamento_polo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `dia_semana`
+--
+ALTER TABLE `dia_semana`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `disciplina`
 --
 ALTER TABLE `disciplina`
@@ -271,7 +330,7 @@ ALTER TABLE `professor`
 -- AUTO_INCREMENT for table `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `turma`
 --
@@ -293,6 +352,13 @@ ALTER TABLE `departamento_polo`
 --
 ALTER TABLE `disciplina`
   ADD CONSTRAINT `fkdp` FOREIGN KEY (`id_departamento_polo`) REFERENCES `departamento_polo` (`id`);
+
+--
+-- Limitadores para a tabela `horario`
+--
+ALTER TABLE `horario`
+  ADD CONSTRAINT `fk_hd` FOREIGN KEY (`id_dia`) REFERENCES `dia_semana` (`id`),
+  ADD CONSTRAINT `fk_th` FOREIGN KEY (`id_turma`) REFERENCES `turma` (`id`);
 
 --
 -- Limitadores para a tabela `professor`
