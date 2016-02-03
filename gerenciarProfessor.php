@@ -116,6 +116,7 @@ if (mysqli_num_rows($result) > 0) {
         </select>
         <small>Use a tecla control (ctrl) para selecionar m&uacute;ltiplos campos.</small>
     </fieldset>
-    <button type="submit" class="btn btn-primary" onclick="alert('Cadastro realizado com sucesso')">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" onClick="validaCadastroProfessor()">Cadastrar</button>  
+    <button type="submit" class="btn btn-primary" onClick="changeContent('listaProfessores.php')">Voltar</button>	
 </form>
 

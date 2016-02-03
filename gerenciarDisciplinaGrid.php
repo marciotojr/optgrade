@@ -1,4 +1,21 @@
 <?php
+include("header.php");
+?>
+
+<style>
+
+    .nova-grade-block {
+        width: auto;
+        padding: 20px;
+        border: solid 1px;
+        margin: 2px 2px 2px 2px;
+    }
+
+</style>
+
+<div class="nova-grade-block">
+  
+<?php
 if (!isset($_GET['id'])) {
   $id = "-1";
   $departamento = "-1";
@@ -15,7 +32,7 @@ if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
 
-$sql = "SELECT d.codigo as codigo, d.nome as nome, d.id_departamento_polo as departamento_polo FROM disciplina d WHERE d.id =" . $id;
+$sql = "SELECT d.codigo as codigo, d.nome as nome, d.id_departamento_polo as departamento_polo FROM disciplina d WHERE d.id =1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -24,7 +41,6 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 ?>
-<form>
     <fieldset><legend>Disciplina</legend></fieldset>
     <fieldset class="form-group">
         <legend>Departamento</legend>
@@ -72,7 +88,14 @@ if (mysqli_num_rows($result) > 0) {
             <input type="text" class="form-control" id="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o c&oacute;digo da disciplina">
         </fieldset>
     </fieldset>
-    <button type="submit" class="btn btn-primary" onClick="validaCadastroDisciplina()">Cadastrar</button>  
-    <button type="submit" class="btn btn-primary" onClick="changeContent('listaDisciplinas.php')">Voltar</button>	
-</form>
+    <button type="submit" class="btn btn-primary" onClick="validaCadastroDisciplinaGrid()">Cadastrar</button>  
+    <button type="submit" class="btn btn-primary" onClick="voltar()">Voltar</button>	
+
+    <script type="text/javascript" language="javascript" charset="utf-8">
+                function voltar()
+                {     
+                        window.location = "listaDisciplinasGrid.php";
+                }
+</script>
+    
 

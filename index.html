@@ -117,8 +117,8 @@ body {
 <div class="login-block">
 	<form id="fLogin" name="fLogin" method="post" action="principal.php" onSubmit="return valida_login(this)">
     	<h1><font color="#4C83A8">Bem Vindo</font></h1>
-		<input type="text" value="" placeholder="Username" id="username" size="35"/>
-		<input type="password" value="" placeholder="Password" id="password" size="35"/>
+		<input type="text" value="" placeholder="Usuario" id="username" size="35"/>
+		<input type="password" value="" placeholder="Senha" id="password" size="35"/>
 		<a href="esquecisenha.html"> <font size="2">Esqueci minha senha</font> </a>
 		<br>
 		<a href="cadastrarUsuário.html"> <font size="2">Cadastrar Usuário</font> </a>
@@ -135,12 +135,12 @@ body {
 		{
 			if(document.getElementById("username").value.length == 0)
 			{
-				msgErro = msgErro + "\n" + "Campo Username é obrigatório;";
+				msgErro = msgErro + "\n" + "Campo Usu�rio é obrigatório;";
 			}
 
 			if(document.getElementById("password").value.length == 0)
 			{
-				msgErro = msgErro + "\n" + "Campo Password é obrigatório;";
+				msgErro = msgErro + "\n" + "Campo Senha é obrigatório;";
 			}                    
 			document.getElementById("username").focus();
 			alert(msgErro);

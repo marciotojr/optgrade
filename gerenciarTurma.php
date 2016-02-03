@@ -81,9 +81,18 @@ if (mysqli_num_rows($result) > 0) {
         </select>
     </fieldset>
     <fieldset class="form-group">
-        <label for="nome">Turma</label>
-        <input type="text" class="form-control" id="nome" value="<?php echo $turma; ?>" placeholder="Insira o nome">
+        <label for="turma">Turma</label>
+        <input type="text" class="form-control" id="turma" value="<?php echo $turma; ?>" placeholder="Insira o nome">
     </fieldset>
-    <button type="submit" class="btn btn-primary" onclick="alert('Cadastro realizado com sucesso')">Cadastrar</button>
+    <fieldset>
+        <?php
+        include ("geraListaHorarios.php");
+        ?>
+    </fieldset>
+    <br>
+    <fieldset>
+        <button type="submit" class="btn btn-primary" onclick="validaCadastroTurma()">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
+    </fieldset>
 </form>
 
