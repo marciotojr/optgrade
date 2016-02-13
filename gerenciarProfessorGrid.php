@@ -14,6 +14,6 @@
 
 <div id="content" class="content">
 <?php
-  include ("gerenciarDisciplina.php");
+  include ("gerenciarProfessor.php");
 ?>
 </div>

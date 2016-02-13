@@ -5,11 +5,22 @@ include("header.php");
 
     .nova-grade-block {
         width: 320px;
-        padding: 20px;
+        padding: 25px;
         border: solid 1px;
         margin: auto auto;
+        border:1px solid #999;
+        overflow-y:auto;
+        -webkit-border-radius:4px;
+        -moz-border-radius:4px;
+        border-radius:4px;
+        -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+        -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+        box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
     }
 
+    .nova-grade-block input {
+       height: auto;
+    }
 </style>
 
 <div class="nova-grade-block">
@@ -31,38 +42,38 @@ include("header.php");
 </div>
 
 <script type="text/javascript" language="javascript" charset="utf-8">
-                function redirecionar(opt)
-                {
-                    if (opt == 0)
-                    {
-                        var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
-                        if (document.getElementById("nome").value.length == 0 || document.getElementById("descricao").value.length == 0)
-                        {
-                            if (document.getElementById("nome").value.length == 0)
-                            {
-                                msgErro = msgErro + "\n" + "Campo Nome é obrigatório;";
-                            }
+  function redirecionar(opt)
+  {
+      if (opt == 0)
+      {
+          var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
+          if (document.getElementById("nome").value.length == 0 || document.getElementById("descricao").value.length == 0)
+          {
+              if (document.getElementById("nome").value.length == 0)
+              {
+                  msgErro = msgErro + "\n" + "Campo Nome é obrigatório;";
+              }
 
-                            if (document.getElementById("descricao").value.length == 0)
-                            {
-                                msgErro = msgErro + "\n" + "Campo Descricao é obrigatório;";
-                            }
-                            document.getElementById("nome").focus();
-                            alert(msgErro);
-                            return false;
-                        }
-                        else
-                        {
-                            alert("Projeto X cadastrado com sucesso. Click em OK para continuar e visualizar os detalhes.");
-                            window.location = "main.php";
-                        }
-                    }
-                    else if (opt == 1)
-                    {
-                        window.location = "principal.php";
-                    }
+              if (document.getElementById("descricao").value.length == 0)
+              {
+                  msgErro = msgErro + "\n" + "Campo Descricao é obrigatório;";
+              }
+              document.getElementById("nome").focus();
+              alert(msgErro);
+              return false;
+          }
+          else
+          {
+              alert("Projeto X cadastrado com sucesso. Click em OK para continuar e visualizar os detalhes.");
+              window.location = "main.php";
+          }
+      }
+      else if (opt == 1)
+      {
+          window.location = "principal.php";
+      }
 
-                }
+  }
 </script>
 
 </body>
