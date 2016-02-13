@@ -103,15 +103,18 @@ body {
 
 <body>
 	
-	<div class="logo"></div>
+    <div class="logo"></div>
+    <div class="login-block">
 	<form id="fEmailConfirmacao" name="fEmailConfirmacao" action="emailconfirmacaoenviado.html" method="post" onSubmit="return valida_email_confirmacao(this)">
-		<div class="login-block">
-			<h1><font color="#4C83A8">Esqueci Minha Senha</font></h1>
-			<h5><font color="#4C83A8">Informe seu email:</font></h5>
-			<input type="text" value="" placeholder="Email" id="email" />
-			<button>Enviar Email</button>
-		</div>
+            <h1><font color="#4C83A8">Esqueci Minha Senha</font></h1>
+            <h5><font color="#4C83A8">Informe seu email:</font></h5>
+            <input type="text" value="" placeholder="Email" id="email" />
+            <button>Enviar Email</button>
+	</form><br>
+        <form id="fVoltar" name="fVoltar" method="post" action="index.html" >
+		<button onClick="index.html">Voltar</button>
 	</form>
+    </div>
 
 <script type="text/javascript" language="javascript">
 	function valida_email_confirmacao ()

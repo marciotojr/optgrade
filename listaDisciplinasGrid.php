@@ -47,13 +47,21 @@ include("header.php");
         </table>
     </fieldset>
     <fieldset>
-        <button type="submit" class="btn btn-primary" onclick="redirecionar()">Inserir</button>
+        <button type="submit" class="btn btn-primary" onclick="redirecionar(0)">Inserir</button>
+        <button type="submit" class="btn btn-primary" onClick="redirecionar(1)">Voltar</button>
     </fieldset>
     
     <script type="text/javascript" language="javascript" charset="utf-8">
-      function redirecionar()
+      function redirecionar(opt)
       {
-          window.location = "gerenciarDisciplinaGrid.php";
+            if (opt == 0)
+            {
+                window.location = "gerenciarDisciplinaGrid.php";
+            }
+            else if (opt == 1)
+            {
+                window.location = "principal.php";
+            }
       }
     </script>
 <script>

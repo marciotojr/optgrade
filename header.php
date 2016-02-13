@@ -71,7 +71,7 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivo <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="novoProjeto.php">Novo Projeto</a></li>
-				<li><a href="#">Abrir Projeto</a></li>
+				<li><a href="abrirProjeto.php">Abrir Projeto</a></li>
 				<li><a href="principal.php">Fechar</a></li>
 			</ul>
 			</li>
