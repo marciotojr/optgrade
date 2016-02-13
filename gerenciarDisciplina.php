@@ -72,7 +72,7 @@ if (mysqli_num_rows($result) > 0) {
             <input type="text" class="form-control" id="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o c&oacute;digo da disciplina">
         </fieldset>
     </fieldset>
-    <button type="submit" class="btn btn-primary" onClick="validaCadastroDisciplina()">Cadastrar</button>  
+    <button type="submit" class="btn btn-primary" onClick="validaCadastroDisciplina()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
     <button type="submit" class="btn btn-primary" onClick="changeContent('listaDisciplinas.php')">Voltar</button>	
 </form>
 

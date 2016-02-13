@@ -91,7 +91,7 @@ if (mysqli_num_rows($result) > 0) {
     </fieldset>
     <br>
     <fieldset>
-        <button type="submit" class="btn btn-primary" onclick="validaCadastroTurma()">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" onclick="validaCadastroTurma()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>
         <button type="submit" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
     </fieldset>
 </form>

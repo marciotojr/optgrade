@@ -41,6 +41,6 @@ if (mysqli_num_rows($result) > 0) {
             <input type="text" class="form-control" length="2" size="2" id="uf" value="<?php echo $uf; ?>" placeholder="Insira a UF">
         </fieldset>
     </fieldset>
-    <button type="submit" class="btn btn-primary" onClick="validaCadastroPolo(0)">Cadastrar</button>  
+    <button type="submit" class="btn btn-primary" onClick="validaCadastroPolo(0)"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
     <button type="submit" class="btn btn-primary" onClick="changeContent('listaPolos.php')">Voltar</button>	
 </form>

@@ -51,47 +51,58 @@ if (!$conn)
                             <span class="badge badge-success" onclick="changeContent('listaProfessores.php')"><i class="icon-minus-sign"></i> Professores</span>
                             <ul>
                                 <?php
-                                $sql = "SELECT pr.id as id, po.nome as polo, pr.nome as professor FROM departamento_polo dp, polo po, professor pr Where pr.departamento=dp.id and po.id=dp.id_polo  ORDER BY `po`.`nome`  ASC";
+                                $sql = "SELECT pr.id as id, po.nome as polo, pr.nome as professor, d.sigla as departamento FROM departamento_polo dp, polo po, professor pr, departamento d Where pr.departamento=dp.id and po.id=dp.id_polo and dp.id_departamento=d.id  ORDER BY polo, sigla, professor  ASC";
                                 $result = mysqli_query($conn, $sql);
                                 $cidade = "";
+                                $departamento = "";
                                 if (mysqli_num_rows($result) > 0) {
                                   while ($row = mysqli_fetch_assoc($result)) {
                                     if ($cidade != $row['polo']) {
+                                      $departamento = "";
                                       if ($cidade != "") {
-                                        echo "</ul>";
+                                        echo "</li></ul></ul>";
                                       }
                                       $cidade = $row['polo'];
                                       echo"<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" . $cidade . "</span><ul>";
+                                    }
+                                    if ($departamento != $row['departamento']) {
+                                      if ($departamento != "") {
+                                        echo "</li></ul>";
+                                      }
+                                      $departamento = $row['departamento'];
+                                      echo"<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" . $departamento . "</span><ul>";
                                     }
                                     echo "<li><a href='#' onclick=\"changeContent('gerenciarProfessor.php?id=" . $row['id'] . "')\">" . $row['professor'] . "</a></li>";
                                   }
                                   echo "</ul>";
                                 }
                                 ?>
-                        </li>
-                </ul>
 
-            <li><span class="badge badge-success" onclick="changeContent('listaDisciplinas.php')"><i class="icon-minus-sign"></i>Disciplinas</span>
-                <ul>
-                    <?php
-                    $sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo FROM departamento_polo dp, polo po, disciplina dis Where dis.id_departamento_polo=dp.id and po.id=dp.id_polo ORDER BY `po`.`nome` ASC ";
-                    $result = mysqli_query($conn, $sql);
-                    $cidade = "";
-                    if (mysqli_num_rows($result) > 0) {
-                      while ($row = mysqli_fetch_assoc($result)) {
-                        if ($cidade != $row['polo']) {
-                          if ($cidade != "") {
-                            echo "</ul>";
-                          }
-                          $cidade = $row['polo'];
-                          echo"<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" . $cidade . "</span><ul>";
-                        }
-                        echo "<li><a href='#' onclick=\"changeContent('gerenciarDisciplina.php?id=" . $row['id'] . "')\">" . $row['codigo'] . " - " . $row['disciplina'] . "</a></li>";
+                        </li>
+                </ul></li>
+        </ul>
+
+        <li><span class="badge badge-success" onclick="changeContent('listaDisciplinas.php')"><i class="icon-minus-sign"></i>Disciplinas</span>
+            <ul>
+                <?php
+                $sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo FROM departamento_polo dp, polo po, disciplina dis Where dis.id_departamento_polo=dp.id and po.id=dp.id_polo ORDER BY `po`.`nome` ASC ";
+                $result = mysqli_query($conn, $sql);
+                $cidade = "";
+                if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    if ($cidade != $row['polo']) {
+                      if ($cidade != "") {
+                        echo "</ul>";
                       }
-                      echo "</ul>";
+                      $cidade = $row['polo'];
+                      echo"<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" . $cidade . "</span><ul>";
                     }
-                    ?>
-            </li>
+                    echo "<li><a href='#' onclick=\"changeContent('gerenciarDisciplina.php?id=" . $row['id'] . "')\">" . $row['codigo'] . " - " . $row['disciplina'] . "</a></li>";
+                  }
+                  echo "</ul>";
+                }
+                ?>
+        </li>
         </ul>
 
         <li><span class="badge badge-success" onclick="changeContent('listaSalas.php')"><i class="icon-minus-sign"></i>Salas</span>
@@ -189,20 +200,20 @@ if ($row = mysqli_fetch_assoc($result)) {
           ;
 </script>
 <script>
-      function showDisciplinas(str) {
-          if (str.length === 0) {
-              document.getElementById("disciplinas").innerHTML = "";
-              return;
-          } else {
-              var xmlhttp = new XMLHttpRequest();
-              xmlhttp.onreadystatechange = function () {
-                  if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                      document.getElementById("disciplinas").innerHTML = xmlhttp.responseText;
-                  }
-              };
-              xmlhttp.open("GET", "getDisciplinas.php?q=" + str, true);
-              xmlhttp.send();
-          }
+  function showDisciplinas(str) {
+      if (str.length === 0) {
+          document.getElementById("disciplinas").innerHTML = "";
+          return;
+      } else {
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function () {
+              if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                  document.getElementById("disciplinas").innerHTML = xmlhttp.responseText;
+              }
+          };
+          xmlhttp.open("GET", "getDisciplinas.php?q=" + str, true);
+          xmlhttp.send();
       }
-    </script>
+  }
+</script>
 </div>
