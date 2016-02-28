@@ -23,24 +23,24 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 ?>
-<form>
+<form action="adicionaSala.php" method="post">
     <fieldset>
-        <input type="hidden" id="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <legend>Dados da Sala</legend>
         <fieldset class="form-group">
             <label for="nome">Codigo</label>
-            <input type="text" class="form-control" id="sala" value="<?php echo $codigo; ?>" placeholder="Insira o nome">
+            <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o nome">
         </fieldset>
     </fieldset>
     <fieldset class="form-group">
         <label for="curso"><legend>Polo</legend></label>
-        <select class="form-control" id="curso">
+        <select class="form-control" name="polo" id="polo">
             <?php
             $sql = "SELECT id, nome, cidade, uf FROM polo WHERE id=" . $id_polo . " UNION (SELECT id, nome, cidade, uf FROM polo WHERE id<>" . $id_polo . " ORDER BY nome)";
             $result = mysqli_query($conn, $sql);
 
             while ($pol = mysqli_fetch_assoc($result)) {
-              echo "<option value='" . $pol['id'] . " '>" . $pol['nome'] . " (" . $pol['cidade'] . " / " . $pol['uf'] . ")</option>";
+              echo "<option value='" . $pol['id'] . "'>" . $pol['nome'] . " (" . $pol['cidade'] . " / " . $pol['uf'] . ")</option>";
             }
             ?>
         </select>

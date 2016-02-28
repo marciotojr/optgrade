@@ -14,6 +14,22 @@ function showDisciplinas(str) {
     }
 }
 
+function showDisciplinasLista(str,arr) {
+    if (str.length === 0) {
+        document.getElementById("disciplinas["+arr+"]").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                document.getElementById("disciplinas["+arr+"]").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "getDisciplinas.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+
 var count = 1;
 
   function geraHorarios(primeiro, ultimo) {

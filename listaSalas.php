@@ -14,7 +14,8 @@
             if (!$conn)
               die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
-
+            $sql = "DELETE FROM sala WHERE id = -1";
+            mysqli_query($conn, $sql);
             $sql = "SELECT s.id as id, s.codigo as codigo, p.nome as polo FROM sala s, polo p WHERE s.id_polo=p.id ORDER BY polo, codigo";
             $result = mysqli_query($conn, $sql);
 

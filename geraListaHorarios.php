@@ -2,14 +2,18 @@
     <div id="horarios">
         <div id="div0">
             <?php
+            if (!function_exists('geraHorarios')) {
 
-            function geraHorarios($primeiro, $ultimo) {
-              $string = "";
-              for ($i = $primeiro; $i <= $ultimo; $i++) {
-                $string = $string . "<option value=" . $i . ">" . $i . ":00</option>";
+              function geraHorarios($primeiro, $ultimo) {
+                $string = "";
+                for ($i = $primeiro; $i <= $ultimo; $i++) {
+                  $string = $string . "<option value=" . $i . ">" . $i . ":00</option>";
+                }
+                return $string;
               }
-              return $string;
+
             }
+
 
             $count = 1;
             if (!isset($_GET['id'])) {
@@ -33,7 +37,7 @@
                 die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
 
-              $sql = "SELECT h.id_dia as dia, h.inicio as inicio, h.fim as fim FROM turma t, horario h WHERE h.id_turma=t.id and t.id=".$id." ORDER BY h.id_dia, h.inicio";
+              $sql = "SELECT h.id_dia as dia, h.inicio as inicio, h.fim as fim FROM turma t, horario h WHERE h.id_turma=t.id and t.id=" . $id . " ORDER BY h.id_dia, h.inicio";
               $result = mysqli_query($conn, $sql);
 
               if (mysqli_num_rows($result) > 0) {
@@ -53,19 +57,7 @@
 <script>
   var count = <? echo $count; ?>;
 
-  function geraHorarios(primeiro, ultimo) {
-      var string = "";
-      for (var i = primeiro; i <= ultimo; i++) {
-          string += "<option value=" + i + ">" + i + ":00</option>"
-      }
-      return string;
-  }
-  ;
 
-  function deleteHorario(h) {
-      document.getElementById(h).innerHTML = "";
-  }
-  ;
 
 
 
