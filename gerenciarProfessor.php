@@ -14,6 +14,8 @@ $uf = "";
 $cep = "";
 $email = "";
 
+extract($_POST, EXTR_OVERWRITE);
+
 $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
 if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
@@ -28,43 +30,43 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 ?>
-<form>
+<form action="adicionaProfessor.php" method="post">
     <fieldset>
-        <input type="hidden" id="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <legend>Dados Pessoais</legend>
         <fieldset class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" value="<?php echo $nome; ?>" placeholder="Insira o nome">
+            <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" placeholder="Insira o nome">
         </fieldset>
         <fieldset class="form-group">
             <label for="endereco">Endere&ccedil;o</label>
-            <input type="text" class="form-control" id="endereco" value="<?php echo $endereco; ?>" placeholder="Insira a rua, avenida, alameda, ect...">
+            <input type="text" class="form-control" name="endereco" value="<?php echo $endereco; ?>" placeholder="Insira a rua, avenida, alameda, ect...">
         </fieldset>
         <fieldset class="form-group">
             <label for="bairro">Bairro</label>
-            <input type="text" class="form-control" id="bairro" value="<?php echo $bairro; ?>" placeholder="Insira o bairro ou distrito">
+            <input type="text" class="form-control" name="bairro" value="<?php echo $bairro; ?>" placeholder="Insira o bairro ou distrito">
         </fieldset>
         <fieldset class="form-group">
             <label for="cidade">Cidade</label>
-            <input type="text" class="form-control" id="cidade" value="<?php echo $cidade; ?>" placeholder="Insira a cidade">
+            <input type="text" class="form-control" name="cidade" value="<?php echo $cidade; ?>" placeholder="Insira a cidade">
         </fieldset>
         <fieldset class="form-group">
             <label for="uf">UF</label>
-            <input type="text" class="form-control" id="uf" value="<?php echo $uf; ?>" placeholder="Insira a UF">
+            <input type="text" class="form-control" name="uf" value="<?php echo $uf; ?>" placeholder="Insira a UF">
         </fieldset>
         <fieldset class="form-group">
             <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" value="<?php echo $cep; ?>" placeholder="Insira o CEP (somente números)" maxlength=7>
+            <input type="text" class="form-control" name="cep" value="<?php echo $cep; ?>" placeholder="Insira o CEP (somente números)" maxlength=7>
         </fieldset>
         <fieldset class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" value="<?php echo $email; ?>" placeholder="Insira o email">
+            <input type="email" class="form-control" name="email" value="<?php echo $email; ?>" placeholder="Insira o email">
         </fieldset>
     </fieldset>
     <fieldset class="form-group">
         <legend>Departamento</legend>
-        <label for="curso">Curso</label>
-        <select class="form-control" id="curso" onchange="showDisciplinas(this.value)">
+        <label for="departamento">Curso</label>
+        <select class="form-control" id="departamento" name="departamento" onchange="showDisciplinas(this.value)">
             <?php
             $sql = "  select  dp.id as id,
                                     d.nome as departamento, 
@@ -100,7 +102,7 @@ if (mysqli_num_rows($result) > 0) {
     <fieldset class="form-group">
         <legend>Informa&ccedil;&otilde;es Complementares</legend>
         <label for="disciplinas">Disciplinas que leciona</label>
-        <select multiple class="form-control" id="disciplinas">
+        <select multiple class="form-control" id="disciplinas" name="disciplinas">
             <?php
             if ($departamento != "-1") {
               $sql = "SELECT id, nome, codigo FROM disciplina WHERE id_departamento_polo=" . $departamento . " ORDER BY nome";
@@ -117,6 +119,6 @@ if (mysqli_num_rows($result) > 0) {
         <small>Use a tecla control (ctrl) para selecionar m&uacute;ltiplos campos.</small>
     </fieldset>
     <button type="submit" class="btn btn-primary" onClick="validaCadastroProfessor()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
-    <button type="submit" class="btn btn-primary" onClick="changeContent('listaProfessores.php')">Voltar</button>	
+    <button type="reset" class="btn btn-primary" onClick="changeContent('listaProfessores.php')">Voltar</button>	
 </form>
 

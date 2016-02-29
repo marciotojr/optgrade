@@ -27,14 +27,14 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 ?>
-<form>
+<form method="post" action="adicionaTurma.php">
     <fieldset>
-        <input type="hidden" id="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
     </fieldset>
     <fieldset class="form-group">
         <legend>Turma</legend>
         <label for="curso">Polo e Departamento</label>
-        <select class="form-control" id="curso" onchange="showDisciplinas(this.value)">
+        <select class="form-control" name="curso" id="curso" onchange="showDisciplinas(this.value)">
             <?php
             $sql = "  select  dp.id as id,
                                     d.nome as departamento, 
@@ -69,7 +69,7 @@ if (mysqli_num_rows($result) > 0) {
     </fieldset>
     <fieldset class="form-group">
         <label for="disciplinas">Disciplina</label>
-        <select class="form-control" id="disciplinas">
+        <select class="form-control" name="disciplinas" id="disciplinas">
             <?php
             $sql = "SELECT id, nome, codigo FROM disciplina WHERE id_departamento_polo=" . $depAux . " ORDER BY nome";
             $result = mysqli_query($conn, $sql);
@@ -82,7 +82,7 @@ if (mysqli_num_rows($result) > 0) {
     </fieldset>
     <fieldset class="form-group">
         <label for="turma">Turma</label>
-        <input type="text" class="form-control" id="turma" value="<?php echo $turma; ?>" placeholder="Insira o nome">
+        <input type="text" class="form-control" name="turma" value="<?php echo $turma; ?>" placeholder="Insira o nome">
     </fieldset>
     <fieldset>
         <?php
@@ -92,7 +92,7 @@ if (mysqli_num_rows($result) > 0) {
     <br>
     <fieldset>
         <button type="submit" class="btn btn-primary" onclick="validaCadastroTurma()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>
-        <button type="submit" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
+        <button type="reset" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
     </fieldset>
 </form>
 

@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
         <legend>Dados da Sala</legend>
         <fieldset class="form-group">
             <label for="nome">Codigo</label>
-            <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o nome">
+            <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o nome" maxlength="10">
         </fieldset>
     </fieldset>
     <fieldset class="form-group">
@@ -46,6 +46,6 @@ if (mysqli_num_rows($result) > 0) {
         </select>
     </fieldset>
     <button type="submit" class="btn btn-primary" onClick="validaCadastroSala()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
-    <button type="submit" class="btn btn-primary" onClick="changeContent('listaSalas.php')">Voltar</button>	
+    <button type="reset" class="btn btn-primary" onClick="changeContent('listaProfessores.php')">Voltar</button>	
 </form>
 

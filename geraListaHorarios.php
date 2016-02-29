@@ -17,19 +17,19 @@
 
             $count = 1;
             if (!isset($_GET['id'])) {
-              echo "<fieldset><select id='dia[\"0\"]'><option value=1>Domingo</option>" .
+              echo "<fieldset><select name='dia[\"0\"]'><option value=1>Domingo</option>" .
               "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option>" .
               "<option value=6>Sexta</option>" .
-              "<option value=7>S&aacute;bado</option></select><select  id='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
-              "<select id='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
+              "<select name='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
               $id = "-1";
               $count+=1;
             } else {
-              echo "<fieldset><select id='dia[\"0\"]'><option value=1>Domingo</option>" .
+              echo "<fieldset><select name='dia[\"0\"]'><option value=1>Domingo</option>" .
               "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option>" .
               "<option value=6>Sexta</option>" .
-              "<option value=7>S&aacute;bado</option></select><select  id='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
-              "<select id='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
+              "<select name='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
               $count+=1;
               $id = $_GET['id'];
               $conn = mysqli_connect('localhost', 'root', '', 'ihc1');

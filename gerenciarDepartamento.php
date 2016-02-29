@@ -5,7 +5,7 @@ if (!isset($_GET['id'])) {
 } else {
   $id = $_GET['id'];
 }
-
+extract($_POST, EXTR_OVERWRITE);
 $id_polo = -1;
 $codigo = "";
 $nome = "";
@@ -25,22 +25,22 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 ?>
-<form>
+<form method="post" action="adicionaDepartamento.php">
     <fieldset>
-        <input type="hidden" id="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <legend>Dados do Departamento</legend>
         <fieldset class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" value="<?php echo $nome; ?>" placeholder="Insira o nome">
+            <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" placeholder="Insira o nome">
         </fieldset>
         <fieldset class="form-group">
             <label for="sigla">Sigla</label>
-            <input type="text" class="form-control" id="sigla" value="<?php echo $sigla; ?>" placeholder="Insira a sigla">
+            <input type="text" class="form-control" name="sigla" value="<?php echo $sigla; ?>" placeholder="Insira a sigla">
         </fieldset>
     </fieldset>
     <fieldset class="form-group">
         <label for="curso"><legend>Polo</legend></label>
-        <select class="form-control" id="polo">
+        <select class="form-control" name="polo">
             <?php
             $sql = "SELECT id, nome, cidade, uf FROM polo WHERE id=" . $id_polo . " UNION (SELECT id, nome, cidade, uf FROM polo WHERE id<>" . $id_polo . " ORDER BY nome)";
             $result = mysqli_query($conn, $sql);
@@ -52,6 +52,6 @@ if (mysqli_num_rows($result) > 0) {
         </select>
     </fieldset>
     <button type="submit" class="btn btn-primary" onClick="validaCadastroSala()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
-    <button type="submit" class="btn btn-primary" onClick="changeContent('listaSalas.php')">Voltar</button>	
+    <button type="reset" class="btn btn-primary" onClick="changeContent('listaDepartamentos.php')">Voltar</button>	
 </form>
 

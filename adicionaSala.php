@@ -19,7 +19,7 @@ function deleteTemporary($conn) {
 $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
 if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
-$message = "Erro desconhecido! Tente novamente, em caso de persist&egrave;ncia chame o administrador!";
+$message = "Erro desconhecido! Tente novamente, em caso de persist&ecirc;ncia chame o administrador!";
 $messageType = "danger";
 extract($_POST, EXTR_OVERWRITE);
 

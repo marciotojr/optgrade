@@ -6,7 +6,7 @@
         <li><span class="badge badge-success"><i class="icon-minus-sign"></i>Departamentos</span>
             <ul>
                 <?php
-                $sql = "SELECT dp.id as id, po.nome as polo, dep.nome as departamento FROM departamento_polo dp, polo po, departamento dep Where dep.id=dp.id_departamento and po.id=dp.id_polo ORDER BY `po`.`nome`, dep.nome ASC";
+                $sql = "SELECT dp.id as id, po.nome as polo, dep.nome as departamento FROM departamento_polo dp, polo po, departamento dep Where dp.id>=0 and dep.id>=0 and dep.id=dp.id_departamento and po.id=dp.id_polo ORDER BY `po`.`nome`, dep.nome ASC";
                 $result = mysqli_query($conn, $sql);
                 $cidade = "";
                 if (mysqli_num_rows($result) > 0) {
@@ -30,7 +30,7 @@
             <span class="badge badge-success" onclick="changeContent('listaRelatorioProfessores.php')"><i class="icon-minus-sign"></i> Professores</span>
             <ul>
                 <?php
-                $sql = "SELECT pr.id as id, po.nome as polo, pr.nome as professor FROM departamento_polo dp, polo po, professor pr Where pr.departamento=dp.id and po.id=dp.id_polo  ORDER BY `po`.`nome`  ASC";
+                $sql = "SELECT pr.id as id, po.nome as polo, pr.nome as professor, d.sigla as departamento FROM departamento_polo dp, polo po, professor pr, departamento d WHERE pr.id>=0 and pr.departamento=dp.id and po.id=dp.id_polo and dp.id_departamento=d.id  ORDER BY polo, sigla, professor  ASC";
                 $result = mysqli_query($conn, $sql);
                 $cidade = "";
                 if (mysqli_num_rows($result) > 0) {
@@ -54,7 +54,7 @@
         <li><span class="badge badge-success" onclick="changeContent('listaRelatorioDisciplinas.php')"><i class="icon-minus-sign"></i>Disciplinas</span>
             <ul>
                 <?php
-                $sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo FROM departamento_polo dp, polo po, disciplina dis Where dis.id_departamento_polo=dp.id and po.id=dp.id_polo ORDER BY `po`.`nome` ASC ";
+                $sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo FROM departamento_polo dp, polo po, disciplina dis Where dis.id>=0 and dis.id_departamento_polo=dp.id and po.id=dp.id_polo ORDER BY `po`.`nome` ASC ";
                 $result = mysqli_query($conn, $sql);
                 $cidade = "";
                 if (mysqli_num_rows($result) > 0) {
@@ -77,7 +77,7 @@
 <li><span class="badge badge-success" onclick="changeContent('listaRelatorioSalas.php')"><i class="icon-minus-sign"></i>Salas</span>
     <ul>
         <?php
-        $sql = "SELECT p.nome as polo, s.codigo as codigo, s.id as id FROM sala s, polo p WHERE p.id=s.id_polo Order BY polo,codigo";
+        $sql = "SELECT p.nome as polo, s.codigo as codigo, s.id as id FROM sala s, polo p WHERE s.id>=0 and p.id=s.id_polo Order BY polo,codigo";
         $result = mysqli_query($conn, $sql);
         $cidade = "";
         if (mysqli_num_rows($result) > 0) {
@@ -103,7 +103,7 @@
         $sql = "SELECT t.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo,"
                 . " t.turma as turma, dep.sigla as sigla, dep.nome as departamento "
                 . "FROM departamento dep, turma t, departamento_polo dp, polo po, disciplina dis "
-                . "WHERE dep.id=dp.id_departamento and dis.id_departamento_polo=dp.id "
+                . "WHERE t.id>=0 and dep.id=dp.id_departamento and dis.id_departamento_polo=dp.id "
                 . "and po.id=dp.id_polo and t.id_disciplina=dis.id and t.id_disciplina=dis.id "
                 . "ORDER BY polo, departamento, disciplina ASC";
         $result = mysqli_query($conn, $sql);

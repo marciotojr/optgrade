@@ -46,5 +46,5 @@ mysqli_query($conn, $sql);
         </fieldset>
     </fieldset>
     <button type="submit" class="btn btn-primary" onClick="validaCadastroPolo(0)"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
-    <button type="submit" class="btn btn-primary" onClick="changeContent('listaPolos.php')">Voltar</button>	
+    <button type="reset" class="btn btn-primary" onClick="changeContent('listaPolos.php')">Voltar</button>	
 </form>
