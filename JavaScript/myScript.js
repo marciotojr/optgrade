@@ -42,10 +42,19 @@ var count = 1;
   ;
 
   function addHorario() {
-      document.getElementById("horarios").innerHTML = document.getElementById("horarios").innerHTML + "<div id='div" + count + "'><fieldset><select name='dia[\"" + count + "\"]'><option value=1>Domingo</option>" +
+      document.getElementById("horarios").innerHTML = document.getElementById("horarios"+id).innerHTML + "<div id='div" + count + "'><fieldset><select name='dia[" + count + "]'><option value=1>Domingo</option>" +
               "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option><option value=6>Sexta</option>" +
-              "<option value=7>S&aacute;bado</option></select><select  name='inicio[\"" + count + "\"]'>" + geraHorarios(7, 22) + "</select><select name='fim[\"" + count + "\"]'>" + geraHorarios(8, 23) + "</select>" +
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio[" + count + "]'>" + geraHorarios(7, 22) + "</select><select name='fim[" + count + "]'>" + geraHorarios(8, 23) + "</select>" +
               "<a style='margin: 5px 5px 5px 5px;' href='#' onclick='deleteHorario(\"div" + count + "\")'><span class='badge badge-important'><i class='glyphicon glyphicon-minus'></i></span></a></fieldset></div>";
+      count += 1;
+  }
+  ;
+  
+  function addHorarioMultiplos(id) {
+      document.getElementById("horarios"+id).innerHTML = document.getElementById("horarios"+id).innerHTML + "<div id='div" +id+"-" + count + "'><fieldset><select name='dia["+id+"][" + count + "]'><option value=1>Domingo</option>" +
+              "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option><option value=6>Sexta</option>" +
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio["+id+"][" + count + "]'>" + geraHorarios(7, 22) + "</select><select name='fim["+id+"][" + count + "]'>" + geraHorarios(8, 23) + "</select>" +
+              "<a style='margin: 5px 5px 5px 5px;' href='#' onclick='deleteHorario(\"div"+id+"-"  + count + "\")'><span class='badge badge-important'><i class='glyphicon glyphicon-minus'></i></span></a></fieldset></div>";
       count += 1;
   }
   ;

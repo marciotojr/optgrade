@@ -1,4 +1,4 @@
-<form>
+<form method="post" action="corrigeColisoes.php">
 <?php
 if (!isset($_GET['id'])) {
   $id = "-1";
@@ -30,6 +30,6 @@ if (mysqli_num_rows($res) > 0) {
     <br>
     <fieldset>
         <button type="submit" class="btn btn-primary" onclick="validaCadastroTurma()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>
-        <button type="submit" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
+        <button type="reset" class="btn btn-primary" onClick="changeContent('listaTurmas.php')">Voltar</button>	
     </fieldset>
 </form>

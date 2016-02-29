@@ -9,10 +9,13 @@ if (!isset($_GET['id'])) {
 } else {
   $id = $_GET['id'];
 }
-$sql = "SELECT t.id as id, t.turma as turma, d.codigo as codigo, p.nome as professor, s.codigo as sala, d.nome as disciplina
-                    FROM turma t, disciplina d, professor p, sala s
-                    WHERE t.id_disciplina=d.id and t.id_professor=p.id and t.id=" . $id . "
-                    ORDER BY t.id";
+$sql = "SELECT t.id as id, t.turma as turma, d.codigo as codigo, COALESCE(p.nome,'Sem Professor') as professor, COALESCE(s.codigo,'Sem Sala') as sala, d.nome as disciplina
+FROM turma t 
+LEFT JOIN professor p ON t.id_professor=p.id 
+LEFT JOIN sala s ON t.id_sala=s.id 
+LEFT JOIN disciplina d ON t.id_disciplina=d.id
+WHERE t.id=".$id.
+" ORDER BY t.id";
 $result = mysqli_query($conn, $sql);
 ?>
 <form>

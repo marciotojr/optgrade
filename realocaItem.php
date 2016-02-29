@@ -5,6 +5,8 @@ if (!isset($_GET['id'])) {
   $id = $_GET['id'];
 }
 
+$turma_id_safe=$id;
+
 $turma = "";
 $disciplina = "-1";
 $departamento = "-1";
@@ -82,7 +84,7 @@ echo $turma;
 <fieldset>
 <?php
 echo '<b>Professor</b><br>';
-echo '<select id="professor[' . $id . ']">';
+echo '<select name="professor[' . $id . ']" id="professor[' . $id . ']">';
 $sql = "SELECT id as id_professor_aux ,nome as nome_professor FROM professor WHERE departamento=" . $dp . " and id=" . $id_professor . "
 UNION
 (SELECT id as id_professor_aux ,nome as nome_professor FROM professor WHERE departamento=" . $dp . " and id<>" . $id_professor . " ORDER BY nome_professor)";
@@ -98,7 +100,7 @@ echo '</select>';
 <fieldset>
 <?php
 echo '<b>Sala</b><br>';
-echo '<select id="sala[' . $id . ']">';
+echo '<select name="sala[' . $id . ']" id="sala[' . $id . ']">';
 $sql = "SELECT s.id as sala_id, s.codigo as sala_codigo FROM sala s WHERE s.id_polo IN (SELECT dp.id_polo FROM departamento_polo dp WHERE dp.id=" . $dp . ") and s.id=" . $id_sala . "
 UNION
 (SELECT s.id as sala_id, s.codigo as sala_codigo FROM sala s WHERE s.id_polo IN (SELECT dp.id_polo FROM departamento_polo dp WHERE dp.id= " . $dp . ") and s.id<>" . $id_sala . " ORDER BY s.codigo)";
@@ -114,7 +116,8 @@ echo '</select>';
 <fieldset>
 <?php
 echo '<b>Horarios</b><br>';
-include ("geraListaHorarios.php");
+$_GET["id"]=$turma_id_safe;
+include ("geraListaHorariosMultiplos.php");
 ?>
 </fieldset>
 <hr>

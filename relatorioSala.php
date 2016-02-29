@@ -42,6 +42,8 @@ $result = mysqli_query($conn, $sql);
                     . "<a href='#' onclick=\"changeContent('excluirTurma.php?id=$id')\"><span class='badge badge-important'><i class='glyphicon glyphicon-remove'></i></span></a></td>"
                     . "<td>$turma</td><td>$disciplina</td><td>$professor</td><td>$dia</td><td>$inicio:00</td><td>$fim:00</td></tr>";
                   }
+                }else{
+                  echo "<h5>Esta sala n&atilde;o foi alocada a nenhuma turma.</h5>";
                 }
                 ?>
                 </table>

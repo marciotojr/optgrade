@@ -133,3 +133,51 @@
         ?>
     </div>
 </ul>
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'ihc1');
+if (!$conn)
+  die("Erro fatal. Não foi possível se conectar ao banco de dados.");
+$message = "Erro desconhecido! Tente novamente, em caso de persist&ecirc;ncia chame o administrador!";
+$messageType = "danger";
+extract($_POST, EXTR_OVERWRITE);
+
+$colisoes = "SELECT id,tipo FROM colisoes ORDER BY id ASC, tipo DESC";
+$falhas = "SELECT t.id as id, d.codigo as codigo, d.nome as disciplina, t.turma as turma FROM turma t, disciplina d WHERE t.id_disciplina=d.id and (t.id_professor IS NULL or t.id_sala IS NULL) and t.id<>-1";
+
+$colisoes = mysqli_query($conn, $colisoes);
+$falhas = mysqli_query($conn, $falhas);
+if (mysqli_num_rows($colisoes) + mysqli_num_rows($falhas) > 0) {//caso exista igual a atualização
+  echo
+  '<span><i class="icon-calendar"></i> Colis&otilde;es/Falhas</span>
+<ul>
+    <div>
+';
+  if (mysqli_num_rows($colisoes) > 0) {
+    echo '<li><span class = "badge badge-important"><i class = ""></i> Colis&otilde;es</span><ul>';
+    $count=0;
+    $id_colisao=-1;
+    while ($row = mysqli_fetch_assoc($colisoes)) {
+      $tipo=$row['tipo'];
+      if($id_colisao!=$row['id']){
+        $count++;
+        $id_colisao=$row['id'];
+        echo '<li><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$id_colisao.'\')"><i class = "glyphicon glyphicon-alert"></i> Colis&atilde;o #'.$count.': '.$tipo.' x Horario</span></li>';
+      }
+    }
+    echo '</ul></li>';
+  }
+  if (mysqli_num_rows($falhas) > 0) {
+    echo '<li><span class = "badge badge-important"><i class = ""></i> Falhas</span><ul>';
+    $count=0;
+    while ($row = mysqli_fetch_assoc($falhas)) {
+      $count++;
+      echo '<li><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$row['id'].'\')"><i class = "glyphicon glyphicon-alert"></i> Falha #'.$count.': '.$row['codigo'].$row['turma'].' - '.$row['disciplina'].'</span></li>';
+    }
+    echo '</li>';
+  }
+  echo '
+    </div>
+</ul>';
+}
+?>
+

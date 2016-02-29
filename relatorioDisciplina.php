@@ -29,10 +29,10 @@ $result = mysqli_query($conn, $sql);
             </legend>
             <fieldset class="form-group">
                 <table class="strippedHover">
-                    <tr><th>A&ccedil;&otilde;es</th><th>Turma</th><th>Professor</th><th>Sala</th><th colspan=3>Horarios</th></tr>
                     <?php
                     mysqli_data_seek($result, 0);
                     if (mysqli_num_rows($result) > 0) {
+                      echo '<tr><th>A&ccedil;&otilde;es</th><th>Turma</th><th>Professor</th><th>Sala</th><th colspan=3>Horarios</th></tr>';
                       while ($array = mysqli_fetch_assoc($result)) {
                         extract($array, EXTR_OVERWRITE);
                         echo "<tr>
@@ -50,6 +50,8 @@ $result = mysqli_query($conn, $sql);
                           echo "</table></td></tr>";
                         }
                       }
+                    }else{
+                      echo "<h5>Esta disciplina n&atilde;o tem turmas alocadas.</h5>";
                     }
                     ?>
             </fieldset>

@@ -1,6 +1,9 @@
+<?php extract($_GET, EXTR_OVERWRITE);?>
 <fieldset>           
-    <div id="horarios">
-        <div id="div0">
+    
+        <?php echo '<div id="horarios'.$id.'">';?>
+    <?php echo '<div id="div'.$id.'">';?>
+        
             <?php
             if (!function_exists('geraHorarios')) {
 
@@ -17,19 +20,19 @@
 
             $count = 1;
             if (!isset($_GET['id'])) {
-              echo "<fieldset><select name='dia[\"0\"]'><option value=1>Domingo</option>" .
+              echo "<fieldset><select name='dia[".$id."][0]'><option value=1>Domingo</option>" .
               "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option>" .
               "<option value=6>Sexta</option>" .
-              "<option value=7>S&aacute;bado</option></select><select  name='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
-              "<select name='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio[".$id."][0]'>" . geraHorarios(7, 22) . "</select>" .
+              "<select name='fim[".$id."][0]'>" . geraHorarios(8, 23) . "</select>";
               $id = "-1";
               $count+=1;
             } else {
-              echo "<fieldset><select name='dia[\"0\"]'><option value=1>Domingo</option>" .
+              echo "<fieldset><select name='dia[".$id."][0]'><option value=1>Domingo</option>" .
               "<option value=2>Segunda</option><option value=3>Ter&ccedil;a</option><option value=4>Quarta</option><option value=5>Quinta</option>" .
               "<option value=6>Sexta</option>" .
-              "<option value=7>S&aacute;bado</option></select><select  name='inicio[\"0\"]'>" . geraHorarios(7, 22) . "</select>" .
-              "<select name='fim[\"0\"]'>" . geraHorarios(8, 23) . "</select>";
+              "<option value=7>S&aacute;bado</option></select><select  name='inicio[".$id."][0]'>" . geraHorarios(7, 22) . "</select>" .
+              "<select name='fim[".$id."][0]'>" . geraHorarios(8, 23) . "</select>";
               $count+=1;
               $id = $_GET['id'];
               $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
@@ -52,5 +55,6 @@
     </div>
 </fieldset>
 <fieldset>
-    <a href="#" onclick="addHorario()"><span class="badge badge-success"><i class="glyphicon glyphicon-plus"></i> Adicionar hor&aacute;rio</span></a>
+    <?php echo ' <a href="#" onclick="addHorarioMultiplos(\''.$id.'\')"><span class="badge badge-success"><i class="glyphicon glyphicon-plus"></i> Adicionar hor&aacute;rio</span></a>';?>
+   
 </fieldset>
