@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jan-2016 às 01:55
+-- Generation Time: 29-Fev-2016 às 03:33
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -25,6 +25,27 @@ USE `ihc1`;
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `colisoes`
+--
+
+CREATE TABLE `colisoes` (
+  `id` int(11) NOT NULL,
+  `id_turma` int(11) NOT NULL,
+  `tipo` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `colisoes`
+--
+
+INSERT INTO `colisoes` (`id`, `id_turma`, `tipo`) VALUES
+(1, 2, 'horario'),
+(1, 3, 'horario'),
+(1, 4, '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `departamento`
 --
 
@@ -40,7 +61,9 @@ CREATE TABLE `departamento` (
 
 INSERT INTO `departamento` (`id`, `nome`, `sigla`) VALUES
 (1, 'Departamento de Ciencia da Computacao', 'DCC'),
-(2, 'Fisica', 'FIS');
+(2, 'Fisica', 'FIS'),
+(3, 'Departamento de EstatÃ­stica', 'EST'),
+(4, 'FÃ­sica', 'FIS');
 
 -- --------------------------------------------------------
 
@@ -60,7 +83,8 @@ CREATE TABLE `departamento_polo` (
 
 INSERT INTO `departamento_polo` (`id_polo`, `id_departamento`, `id`) VALUES
 (1, 1, 4),
-(1, 2, 6),
+(1, 3, 7),
+(1, 4, 6),
 (2, 1, 5);
 
 -- --------------------------------------------------------
@@ -106,8 +130,11 @@ CREATE TABLE `disciplina` (
 
 INSERT INTO `disciplina` (`id`, `codigo`, `nome`, `id_departamento_polo`) VALUES
 (1, 'DCC016', 'Sistemas Operacionais', 4),
-(2, 'FIS075', 'Fisica III', 6),
-(3, 'DCC013', 'Banco de Dados', 5);
+(2, 'FIS075', 'FÃ­sica III', 6),
+(3, 'DCC013', 'Banco de Dados', 5),
+(4, 'DCC015', 'Algoritmos', 4),
+(6, 'FIS115', 'Lab de FÃ­sica Experiemental', 6),
+(7, 'EST011', 'CÃ¡lculo de Probabilidade', 7);
 
 -- --------------------------------------------------------
 
@@ -150,8 +177,11 @@ CREATE TABLE `polo` (
 --
 
 INSERT INTO `polo` (`id`, `nome`, `cidade`, `uf`) VALUES
-(1, 'Juiz de Fora', 'Juiz de Fora', 'MG'),
-(2, 'Governador Valadares', 'Governador Valadares', 'MG');
+(1, 'UFJF/JF', 'Juiz de Fora', 'MG'),
+(2, 'UFJF/GV', 'Governador Valadares', 'MG'),
+(3, 'UFV', 'ViÃ§osa', 'MG'),
+(4, 'UCP', 'PetrÃ³polis', 'RJ'),
+(5, 'IFET', 'Juiz de Fora', 'MG');
 
 -- --------------------------------------------------------
 
@@ -176,10 +206,11 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `uf`, `cep`, `email`, `departamento`) VALUES
-(1, 'Marcelo Moreno', 'Rua A', 'Bairro a', 'Juiz de Fora', 'MG', '36154356', 'moreno@ice.ufjf.br', 4),
+(1, 'JoÃ£o Francisco', 'Rua A', 'Bairro a', 'Juiz de Fora', 'MG', '36154356', 'joao@ice.ufjf.br', 4),
 (2, 'Luiz Henrique', 'Rua B', 'Bairro B', 'Governador Valadares', 'MG', '36457895', 'luiz@ice.ufjf.br', 5),
 (3, 'Laura Lima', 'Rua C', 'Bairro C', 'Juiz de Fora', 'MG', '34544874', 'laura@ice.ufjf.br', 4),
-(4, 'Bernard', 'a', 'a', 'Juiz de Fora', 'MG', '35414148', 'bernard@hotmail.com', 6);
+(4, 'AntÃ´nio Carlos', 'a', 'a', 'Juiz de Fora', 'MG', '35414148', 'bernard@hotmail.com', 6),
+(10, 'Leandro', 'Av Tres', 'Cidade Baixa', 'Governador Valadares', 'MG', '36106457', 'leandro@hotmail.com', 6);
 
 -- --------------------------------------------------------
 
@@ -198,8 +229,11 @@ CREATE TABLE `sala` (
 --
 
 INSERT INTO `sala` (`id`, `codigo`, `id_polo`) VALUES
-(1, 'S201', 1),
-(2, '2135', 2);
+(1, '312', 2),
+(2, 'S301', 1),
+(3, 'S101', 1),
+(4, 'S201', 2),
+(5, 'S101', 2);
 
 -- --------------------------------------------------------
 
@@ -227,6 +261,12 @@ INSERT INTO `turma` (`id`, `id_disciplina`, `turma`, `id_professor`, `id_sala`) 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `colisoes`
+--
+ALTER TABLE `colisoes`
+  ADD KEY `fk_ct` (`id_turma`);
 
 --
 -- Indexes for table `departamento`
@@ -300,12 +340,12 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `departamento_polo`
 --
 ALTER TABLE `departamento_polo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `dia_semana`
 --
@@ -315,22 +355,22 @@ ALTER TABLE `dia_semana`
 -- AUTO_INCREMENT for table `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `polo`
 --
 ALTER TABLE `polo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `turma`
 --
@@ -339,6 +379,12 @@ ALTER TABLE `turma`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `colisoes`
+--
+ALTER TABLE `colisoes`
+  ADD CONSTRAINT `fk_ct` FOREIGN KEY (`id_turma`) REFERENCES `turma` (`id`);
 
 --
 -- Limitadores para a tabela `departamento_polo`
