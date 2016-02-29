@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
     <fieldset class="form-group">
         <legend>Turma</legend>
         <label for="curso">Polo e Departamento</label>
-        <select class="form-control" name="curso" id="curso" onchange="showDisciplinas(this.value)">
+        <select class="form-control" name="departamento" id="curso" onchange="showDisciplinas(this.value)">
             <?php
             $sql = "  select  dp.id as id,
                                     d.nome as departamento, 
@@ -69,7 +69,7 @@ if (mysqli_num_rows($result) > 0) {
     </fieldset>
     <fieldset class="form-group">
         <label for="disciplinas">Disciplina</label>
-        <select class="form-control" name="disciplinas" id="disciplinas">
+        <select class="form-control" name="disciplina" id="disciplinas">
             <?php
             $sql = "SELECT id, nome, codigo FROM disciplina WHERE id_departamento_polo=" . $depAux . " ORDER BY nome";
             $result = mysqli_query($conn, $sql);
