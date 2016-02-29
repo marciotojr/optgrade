@@ -15,7 +15,7 @@
               die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
 
-            $sql = "SELECT t.id as id, d.codigo as codigo, d.nome as nome, de.nome as departamento, p.nome as polo, t.turma as turma FROM disciplina d, departamento_polo dp, departamento de, polo p, turma t WHERE d.id_departamento_polo=dp.id and dp.id_departamento=de.id and dp.id_polo = p.id and t.id_disciplina=d.id ORDER BY polo, departamento, codigo, turma";
+            $sql = "SELECT t.id as id, d.codigo as codigo, d.nome as nome, de.nome as departamento, p.nome as polo, t.turma as turma FROM disciplina d, departamento_polo dp, departamento de, polo p, turma t WHERE d.id_departamento_polo=dp.id and dp.id_departamento=de.id and dp.id_polo = p.id and t.id_disciplina=d.id and t.id<>-1 ORDER BY polo, departamento, codigo, turma";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
