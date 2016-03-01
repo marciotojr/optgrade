@@ -34,7 +34,7 @@ if (!$conn)
 </script>
 <div class="lateralMenu">
     <div class="tree">
-        <legend>Projeto X</legend>
+        <legend><a href="main.php">Projeto X</a></legend>
         <ul>            
             <li>
                 <span><i class="icon-calendar"></i>Cadastros</span>

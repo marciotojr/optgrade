@@ -60,7 +60,7 @@ if (mysqli_num_rows($result) > 0) {
         </fieldset>
         <fieldset class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" value="<?php echo $email; ?>" placeholder="Insira o email">
+            <input type="email" class="form-control" name="email" value="<?php echo $email; ?>" placeholder="Insira o email. Ex.: teste@gmail.com">
         </fieldset>
     </fieldset>
     <fieldset class="form-group">

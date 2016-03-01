@@ -116,9 +116,9 @@ body {
 <div class="logo"></div>
 <div class="login-block">
 	<form id="fNovoUsuario" name="fNovoUsuario" method="post" action="emailNovoUsuario.html" onSubmit="return valida_novo_usuario(this)">
-    	<h1><font color="#4C83A8">Cadastro Novo Usu√°rio</font></h1>
+    	<h1><font color="#4C83A8">Cadastro Novo Usu·rio</font></h1>
 		<input type="text" value="" placeholder="Usuario" id="username" size="35"/>
-		<input type="password" value="" placeholder="Senha" id="password" size="35"/>
+                <input type="password" value="" placeholder="Senha. M&iacute;nimo 8 caracteres" id="password" size="35"/>
 		<input type="text" value="" placeholder="Email" id="email" />
 		<button>Registrar</button>
 		<br><br>
@@ -131,9 +131,9 @@ body {
 <script type="text/javascript" language="javascript">
 	function valida_novo_usuario ()
 	{
-		var msgErro = "Os campos abaixo s√£o de preenchimento obrigat√≥rio: ";
+		var msgErro = "Os campos abaixo s„o de preenchimento obrigatÛrio: ";
 		if(document.getElementById("username").value.length == 0 || 
-		   document.getElementById("password").value.length == 0 || 
+		   document.getElementById("password").value.length < 8 || 
 		   document.getElementById("email").value.length == 0 || 
 		   document.getElementById("email").value.search("@") < 1 || 
 		   document.getElementById("email").value.search(".com") < 4
@@ -141,22 +141,22 @@ body {
 		{
 			if(document.getElementById("username").value.length == 0)
 			{
-				msgErro = msgErro + "\n" + "Campo Usu·rio √© obrigat√≥rio;";
+				msgErro = msgErro + "\n" + "Campo Usuario È obrigatÛrio;";
 			}
 
-			if(document.getElementById("password").value.length == 0)
+			if(document.getElementById("password").value.length < 8)
 			{
-				msgErro = msgErro + "\n" + "Campo Senha √© obrigat√≥rio;";
+				msgErro = msgErro + "\n" + "Campo Senha È obrigatÛrio e deve conter pelo menos 8 caracteres;";
 			}             
 			
 			if(document.getElementById("email").value.length == 0)
 			{
-				msgErro = msgErro + "\n" + "Campo Email √© obrigat√≥rio;";
+				msgErro = msgErro + "\n" + "Campo Email È obrigatÛrio;";
 			}    
 			   
 			if(document.getElementById("email").value.search("@") < 1 || document.getElementById("email").value.search(".com") < 4)
 			{
-				msgErro = msgErro + "\n" + "Email informado √© inv√°lido. \nGentileza verificar e reinformar.";
+				msgErro = msgErro + "\n" + "Email informado È inv·lido. \nGentileza verificar e reinformar.";
 			}
 			
 			document.getElementById("username").focus();

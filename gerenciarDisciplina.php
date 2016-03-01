@@ -71,7 +71,7 @@ if (mysqli_num_rows($result) > 0) {
         </fieldset>
         <fieldset class="form-group">
             <label for="codigo">C&oacute;digo</label>
-            <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o c&oacute;digo da disciplina">
+            <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" placeholder="Insira o c&oacute;digo da disciplina. Ex.: DCC125">
         </fieldset>
     </fieldset>
     <button type="submit" class="btn btn-primary" onClick="validaCadastroDisciplina()"><?php if($id=="-1") echo "Cadastrar"; else echo "Salvar altera&ccedil;&otilde;s"; ?></button>  
