@@ -161,7 +161,7 @@ if (mysqli_num_rows($colisoes) + mysqli_num_rows($falhas) > 0) {//caso exista ig
       if($id_colisao!=$row['id']){
         $count++;
         $id_colisao=$row['id'];
-        echo '<li><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$id_colisao.'\')"><i class = "glyphicon glyphicon-alert"></i> Colis&atilde;o #'.$count.': '.$tipo.' x Horario</span></li>';
+        echo '<li><a href="#"><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$id_colisao.'\')"><i class = "glyphicon glyphicon-alert"></i> Colis&atilde;o #'.$count.': '.$tipo.' x Horario</span></a></li>';
       }
     }
     echo '</ul></li>';
@@ -171,7 +171,7 @@ if (mysqli_num_rows($colisoes) + mysqli_num_rows($falhas) > 0) {//caso exista ig
     $count=0;
     while ($row = mysqli_fetch_assoc($falhas)) {
       $count++;
-      echo '<li><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$row['id'].'\')"><i class = "glyphicon glyphicon-alert"></i> Falha #'.$count.': '.$row['codigo'].$row['turma'].' - '.$row['disciplina'].'</span></li>';
+      echo '<li><a href="#"><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$row['id'].'\')"><i class = "glyphicon glyphicon-alert"></i> Falha #'.$count.': '.$row['codigo'].$row['turma'].' - '.$row['disciplina'].'</span></a></li>';
     }
     echo '</li>';
   }
