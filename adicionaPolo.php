@@ -31,7 +31,7 @@ if (isset($_POST["id"]) && $_POST["id"] != -1) {
     die();
   }
 } else {
-  $sql = "SELECT id, nome, cidade FROM polo WHERE nome = '" . $nome . "'";
+  $sql = "SELECT id, nome, cidade FROM polo WHERE id<>-1 and nome = '" . $nome . "'";
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) > 0) {

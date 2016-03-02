@@ -91,10 +91,13 @@ if (!$conn)
                                 if (mysqli_num_rows($result) > 0) {
                                   while ($row = mysqli_fetch_assoc($result)) {
                                     if ($cidade != $row['polo']) {
-                                      $departamento = "";
                                       if ($cidade != "") {
-                                        echo "</li></ul></ul>";
+                                        echo "</li></ul>";
                                       }
+                                      if ($departamento != "") {
+                                        echo "</li></ul>";
+                                      }
+                                      $departamento = "";
                                       $cidade = $row['polo'];
                                       echo"<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" . $cidade . "</span><ul>";
                                     }
@@ -107,13 +110,13 @@ if (!$conn)
                                     }
                                     echo "<li><a href='#' onclick=\"changeContent('gerenciarProfessor.php?id=" . $row['id'] . "')\">" . $row['professor'] . "</a></li>";
                                   }
-                                  echo "</ul>";
+                                  echo "</li></ul>";
+                                  echo "</li></ul>";
                                 }
                                 ?>
 
                         </li>
-                </ul></li>
-        </ul>
+                </ul>
 
         <li><span class="badge badge-success" onclick="changeContent('listaDisciplinas.php')"><i class="icon-minus-sign"></i>Disciplinas</span>
             <ul>
@@ -200,12 +203,12 @@ if (!$conn)
     </div>
 </ul>
 <?php
-$sql = "SELECT dis.id as id, po.nome as polo, dis.nome as disciplina, dis.codigo as codigo, t.turma as turma, dep.sigla as sigla, dep.nome as departamento FROM departamento dep, turma t, departamento_polo dp, polo po, disciplina dis Where dep.id>=0 and t.id>=0 and dp.id>=0 and po.id>=0 and dis.id>=0 and dep.id=dp.id_departamento and dis.id_departamento_polo=dp.id and po.id=dp.id_polo and t.id_disciplina=dis.id and t.id_disciplina=dis.id ORDER BY polo, departamento, disciplina ASC";
+$sql = "SELECT id FROM turma WHERE id_sala IS NOT NULL or id_professor IS NOT NULL";
 $result = mysqli_query($conn, $sql);
 if ($row = mysqli_fetch_assoc($result)) {
   include("gradeGerada.php");
 } else {
-  echo '<br><br><form><fieldset><input type="submit" class="btn btn-primary" value="Gerar Nova Grade"></fieldset></form>';
+  echo '<br><br><form action="geraGrade.php" form="post"><fieldset><input type="submit" class="btn btn-primary" value="Gerar Nova Grade"></fieldset></form>';
 }
 ?>
 <script type="text/javascript">
