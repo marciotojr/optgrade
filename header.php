@@ -92,16 +92,15 @@
                                     <li><a href="#">Preferencia de Disciplinas</a></li-->
                                 </ul>
                             </li>
-                            <!--li class="dropdown">
+                            <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatorios <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                             <li><a href="#">Horario x Professor</a></li>
-                             <li><a href="#">Professore x Turma</a></li>
-                             <li><a href="#">Turma x Sala</a></li>
-                             <li><a href="#">Turma x Dia</a></li>
-                             <li><a href="#">Turma x Horario x Professor</a></li>
+                             <li><a href="#">Turma x Professor</a></li>
+                             <li><a href="main.php?relatorio=1&page=relatorioSala">Turma x Sala</a></li>
+                             <li><a href="#">Turma x Disciplina</a></li>
+                             <li><a href="#">Turma x Departamento</a></li>
                             </ul>
-                            </li-->
+                            </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="perfil.php"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>

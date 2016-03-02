@@ -5,7 +5,7 @@ include("lateralMenu.php");
 ?>
 <div id="content" class="content">
     <?php
-    $_GET=$_POST;
+    //$_GET = $_POST;
     if (isset($_POST["message"])) {
       $messageTitle = "";
       //echo "<div id='message' class='".$_POST["messageType"]."Message'>".$_POST["message"]."</div>";
@@ -26,8 +26,11 @@ include("lateralMenu.php");
       echo "<div class='alert alert-" . $_POST["messageType"] . " fade in'><strong>" . $messageTitle . "</strong> " . $_POST["message"]
       . '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
     }
-    if (isset($_POST["page"]) && $_POST["page"]!="") {
+    if ((isset($_POST["page"]) && $_POST["page"] != "")) {
       include $_POST["page"] . ".php";
+      //echo $_POST["page"] . ".php";
+    } else if ((isset($_GET["page"]) && $_GET["page"] != "")) {
+      include $_GET["page"] . ".php";
     } else {
       echo '<legend>Primeiros Passos</legend>
     <p>Para buscar informa&ccedil;&otilde;es do projeto utilize os menus laterias de forma sequenciada para navegar.</p>
