@@ -6,29 +6,19 @@ if (!isset($_GET['id'])) {
 } else {
   $id = $_GET['id'];
 }
+extract($_POST, EXTR_OVERWRITE);
 
-$turma = "";
-$disciplina = "-1";
-$departamento = "-1";
-$dp = "-1";
-
-echo '<input type="hidden" name="acao" value="realoca">'; 
-echo '<input type="hidden" name="colisao" value="'.$id.'">'; 
+echo '<input type="hidden" name="acao" value="aloca">'; 
 
 $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
 if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
 //$db = mysqli_select_db('ihc1', $link) or die('Could not select database.');
 
-$sql = "SELECT id_turma, tipo FROM colisoes WHERE id=" . $id;
-$res = mysqli_query($conn, $sql);
-if (mysqli_num_rows($res) > 0) {
-  while ($turmas = mysqli_fetch_assoc($res)) {
-    extract($turmas, EXTR_OVERWRITE);
-    $_GET['id']=$id_turma;
+
+    $_GET['id']=$id;
     include("realocaItem.php");
-  }
-}
+  
 ?>
     <br>
     <fieldset>

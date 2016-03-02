@@ -171,7 +171,7 @@ if (mysqli_num_rows($colisoes) + mysqli_num_rows($falhas) > 0) {//caso exista ig
     $count=0;
     while ($row = mysqli_fetch_assoc($falhas)) {
       $count++;
-      echo '<li><a href="#"><span class = "badge badge-important"  onclick="changeContent(\'realoca.php?id='.$row['id'].'\')"><i class = "glyphicon glyphicon-alert"></i> Falha #'.$count.': '.$row['codigo'].$row['turma'].' - '.$row['disciplina'].'</span></a></li>';
+      echo '<li><a href="#"><span class = "badge badge-important"  onclick="changeContent(\'aloca.php?id='.$row['id'].'\')"><i class = "glyphicon glyphicon-alert"></i> Falha #'.$count.': '.$row['codigo'].$row['turma'].' - '.$row['disciplina'].'</span></a></li>';
     }
     echo '</li>';
   }

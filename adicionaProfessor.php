@@ -8,8 +8,8 @@ function saveToPost($message, $messageType, $page) {
 
 function createTemporary($conn) {
   extract($_POST, EXTR_OVERWRITE);
-  mysqli_query($conn, "INSERT INTO 'professor' ('id', 'nome', 'endereco', 'bairro', 'cidade', 'uf', 'cep', 'email', 'departamento') "
-          . "VALUES (-1, \'" . $nome . "\', \'" . $endereco . "\', \'" . $bairro . "\', \'" . $cidade . "\', \'" . $email . "\', \'" . $cep . "\', \'" . $email . "\', \'" . $departamento . "\')");
+  mysqli_query($conn, "INSERT INTO professor (id, nome, endereco, bairro, cidade, uf, cep, email, departamento) "
+          . "VALUES (-1, '" . $nome . "', '" . $endereco . "', '" . $bairro . "', '" . $cidade . "', '" . $uf . "', '" . $cep . "', '" . $email . "', " . $departamento . ")");
 }
 
 function deleteTemporary($conn) {
@@ -56,8 +56,8 @@ if (isset($_POST["id"]) && $_POST["id"] != -1) {
     include 'main.php';
     die();
   } else {//caso não exista igual a adição
-    $sql = "INSERT INTO 'professor' ('id', 'nome', 'endereco', 'bairro', 'cidade', 'uf', 'cep', 'email', 'departamento') "
-            . "VALUES (NULL, \'" . $nome . "\', \'" . $endereco . "\', \'" . $bairro . "\', \'" . $cidade . "\', \'" . $email . "\', \'" . $cep . "\', \'" . $email . "\', \'" . $departamento . "\')";
+    $sql = "INSERT INTO professor (id, nome, endereco, bairro, cidade, uf, cep, email, departamento)  "
+            . "VALUES (NULL, '" . $nome . "', '" . $endereco . "', '" . $bairro . "', '" . $cidade . "', '" . $uf . "', '" . $cep . "', '" . $email . "', " . $departamento . ")";
     if (mysqli_query($conn, $sql)) {
       $message = "Professor adicionado com sucesso!";
       $messageType = "success";

@@ -1,9 +1,9 @@
 <?php
 
-function saveToPost($message, $messageType, $page) {
+function saveToPost($message, $messageType) {
   $_POST["message"] = $message;
   $_POST["messageType"] = $messageType;
-  $_POST["page"] = $page;
+  $_POST["page"] = "";
 }
 
 $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
@@ -12,10 +12,6 @@ if (!$conn)
 $message = "Erro desconhecido! Tente novamente, em caso de persist&ecirc;ncia chame o administrador!";
 $messageType = "danger";
 extract($_POST, EXTR_OVERWRITE);
-print_r($dia);
-echo "<br>";
-echo "<br>";
-echo "<br>";
 foreach ($professor as $key => $value) {
  // $key = (int)$key;
   $sql = "UPDATE turma SET id_sala= " . $sala[$key] . ", id_professor = " . $professor[$key] . " WHERE id = " . $key;
@@ -25,6 +21,15 @@ foreach ($professor as $key => $value) {
     //$subkey = (int)$subkey;
     mysqli_query($conn, "INSERT INTO horario (id_turma, id_dia, inicio, fim) VALUES (" . $key . "," . $dia[$key][$subkey] . ", " . $inicio[$key][$subkey] . ", " . $fim[$key][$subkey] . ");");
   }
+}
+
+if($acao=="realoca"){
+  mysqli_query($conn, "DELETE FROM colisoes WHERE id = " . $colisao);
+  saveToPost("Colis&atilde;o corrigida com sucesso. Verifique outras falhas e colisões!","info");
+  include("main.php");
+}else{
+  saveToPost("Aloca&ccedil;&atilde;o realizada com sucesso. Verifique outras falhas e colisões!","info");
+  include("main.php");
 }
 /*
 
