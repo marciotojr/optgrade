@@ -22,7 +22,7 @@ foreach ($professor as $key => $value) {
     mysqli_query($conn, "INSERT INTO horario (id_turma, id_dia, inicio, fim) VALUES (" . $key . "," . $dia[$key][$subkey] . ", " . $inicio[$key][$subkey] . ", " . $fim[$key][$subkey] . ");");
   }
 }
-
+include 'procuraColisoes.php';
 if($acao=="realoca"){
   mysqli_query($conn, "DELETE FROM colisoes WHERE id = " . $colisao);
   saveToPost("Colis&atilde;o corrigida com sucesso. Verifique outras falhas e colisões!","info");

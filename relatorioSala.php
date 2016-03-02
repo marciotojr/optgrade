@@ -1,4 +1,23 @@
 <?php
+if (isset($_GET['relatorio'])) {
+  unset($_GET['relatorio']);
+  $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
+  if (!$conn)
+    die("Erro fatal. Não foi possível se conectar ao banco de dados.");
+  $sql = "SELECT s.id as id, s.codigo as codigo, p.nome as polo FROM sala s, polo p, turma t WHERE s.id_polo=p.id and t.id_sala=s.id ORDER BY polo, codigo";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) > 0) {
+    while ($disciplina = mysqli_fetch_assoc($result)) {
+      extract($disciplina, EXTR_OVERWRITE);
+      $_GET['id'] = $id;
+      include 'relatorioSala.php';
+    }
+  } else {
+    echo "<tr><td colspan=5>Nenhuma disciplina registrada.</td></tr>";
+  }
+  die();
+}
 $conn = mysqli_connect('localhost', 'root', '', 'ihc1');
 if (!$conn)
   die("Erro fatal. Não foi possível se conectar ao banco de dados.");
@@ -42,7 +61,7 @@ $result = mysqli_query($conn, $sql);
                     . "<a href='#' onclick=\"changeContent('excluirTurma.php?id=$id')\"><span class='badge badge-important'><i class='glyphicon glyphicon-remove'></i></span></a></td>"
                     . "<td>$turma</td><td>$disciplina</td><td>$professor</td><td>$dia</td><td>$inicio:00</td><td>$fim:00</td></tr>";
                   }
-                }else{
+                } else {
                   echo "<h5>Esta sala n&atilde;o foi alocada a nenhuma turma.</h5>";
                 }
                 ?>

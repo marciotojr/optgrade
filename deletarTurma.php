@@ -32,7 +32,7 @@ $turma_result = mysqli_query($conn, $sql);
 while ($turma_corrente = mysqli_fetch_assoc($turma_result)) {
   mysqli_query($conn, "DELETE FROM colisoes WHERE id=" . $turma_corrente['id_col']);
 }
-
+include 'procuraColisoes.php';
 if ($flag_turma) {
   saveToPost("Entradas excluídas com sucesso!", "success", "listaTurmas");
   include 'main.php';
