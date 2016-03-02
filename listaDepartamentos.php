@@ -1,6 +1,6 @@
 
 <fieldset>
-    <legend>Disciplinas</legend>
+    <legend>Departamentos</legend>
     <fieldset class="form-group">
         <table class="strippedHover">
             <tr><th>A&ccedil;&otilde;es</th><th>Nome</th><th>Sigla</th><th>Polo</th></tr>

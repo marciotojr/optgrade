@@ -99,6 +99,39 @@ function validaCadastroPolo(opt)
       {
           window.location = "listaPolos.php";
       }
+      else if (opt == 2)
+      {
+          var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
+          if (document.getElementById("nome").value.length == 0 || document.getElementById("cidade").value.length == 0 || document.getElementById("uf").value.length == 0)
+          {
+              if (document.getElementById("nome").value.length == 0)
+              {
+                  msgErro = msgErro + "\n" + "Campo Nome é obrigatório;";
+              }
+
+              if (document.getElementById("cidade").value.length == 0)
+              {
+                  msgErro = msgErro + "\n" + "Campo Cidade é obrigatório;";
+              }
+
+              if (document.getElementById("uf").value.length == 0)
+              {
+                  msgErro = msgErro + "\n" + "Campo UF é obrigatório;";
+              }
+              document.getElementById("nome").focus();
+              alert(msgErro);
+              return false;
+          }
+          else
+          {
+              alert("Polo X atualizado com sucesso.");
+              changeContent("listaPolosGridCadastro.php");
+          }
+      }
+      else if(opt == 3)
+      {
+          window.location = "listaPolosGridCadastro.php";
+      }
 
   };
   

@@ -34,7 +34,8 @@ body {
 }
 
 .login-block {
-    width: 320px;
+    width: 50%;
+	height: 280px;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -48,7 +49,7 @@ body {
     font-size: 18px;
     text-transform: uppercase;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .login-block input {
@@ -108,6 +109,10 @@ body {
     background: #3A4883;
 }
 
+.login-block p {
+    color: #95A5A5;
+}
+
 </style>
 </head>
 
@@ -117,6 +122,7 @@ body {
 <div class="login-block">
 	<form id="fLogin" name="fLogin" method="post" action="principal.php" onSubmit="return valida_login(this)">
     	<h1><font color="#4C83A8">Bem Vindo</font></h1>
+            <div style="float:left; width:40% !important" >
 		<input type="text" value="" placeholder="Usuario" id="username" size="35"/>
 		<input type="password" value="" placeholder="Senha. M&iacute;nimo 8 caracteres" id="password" size="35"/>
 		<a href="esquecisenha.html"> <font size="2">Esqueci minha senha</font> </a>
@@ -124,15 +130,39 @@ body {
 		<a href="cadastrarUsuário.html"> <font size="2">Cadastrar Usuário</font> </a>
 		<br><br>
 		<button>Entrar</button>
+            </div>
+            <div style="float:left; margin-left:8%; width:52% !important" >
+                <p style="margin-top:-1px;">O OptGrade é uma ferramenta que auxilia o gerenciamento e a montagem de planos departamentais.
+                </p>
+                <p>Reduzindo o esforço manual e aumentando a imparcialidade, uma vez que a solução ótima 
+                        é encontrada para o problema.
+                </p>
+            </div>
 	</form>
 </div>
 
 <script type="text/javascript" language="javascript">
 	function valida_login ()
 	{
-		var msgErro = "Os campos abaixo são de preenchimento obrigatório: ";
-		if(document.getElementById("username").value.length == 0 || document.getElementById("password").value.length == 0)
+		var msgErro = "Os campos abaixo sao de preenchimento obrigatorio: ";
+		if(document.getElementById("username").value.length == 0 || document.getElementById("password").value.length < 8)
 		{
 			if(document.getElementById("username").value.length == 0)
 			{
-				msgErro = msgErro + "\n" + "Campo Usu
+				msgErro = msgErro + "\n" + "Campo Usuario e obrigatorio;";
+			}
+
+			if(document.getElementById("password").value.length < 8)
+			{
+				msgErro = msgErro + "\n" + "Campo Senha e obrigatorio e deve conter pelo menos 8 caracteres;";
+			}                    
+			document.getElementById("username").focus();
+			alert(msgErro);
+			return false;
+		}
+	}
+</script>
+
+</body>
+
+</html>

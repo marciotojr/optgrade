@@ -38,7 +38,7 @@ include("header.php");
                     if (mysqli_num_rows($result) > 0) {
                       while ($disciplina = mysqli_fetch_assoc($result)) {
                         extract($disciplina, EXTR_OVERWRITE);
-                        echo '<tr><td><a href="gerenciarPoloGrid.php?id=' . $id . '"><span class="badge badge-edit"><i class="glyphicon glyphicon-pencil"></i></span></a>'
+                        echo '<tr><td><a href="gerenciarPoloGridCadastro.php?id=' . $id . '"><span class="badge badge-edit"><i class="glyphicon glyphicon-pencil"></i></span></a>'
                         . '<a href="#" onclick="excluir()"><span class="badge badge-important"><i class="glyphicon glyphicon-remove"></i></span></a></td>';
                         echo '<td>' . $polo . '</td><td>' . $cidade . ' / ' . $uf . '</td></tr>';
                       }
@@ -59,7 +59,7 @@ include("header.php");
       {
             if (opt == 0)
             {
-                window.location = "gerenciarPoloGrid.php";
+                window.location = "gerenciarPoloGridCadastro.php";
             }
             else if (opt == 1)
             {

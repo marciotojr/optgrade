@@ -67,8 +67,12 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
+                            
+                            <li>
+                                <a href="principal.php"><span class="glyphicon glyphicon-home"></span> Home</a>
+                            </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivo <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Projeto <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="novoProjeto.php">Novo Projeto</a></li>
                                     <li><a href="abrirProjeto.php">Abrir Projeto</a></li>
@@ -78,7 +82,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros Basicos <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="listaPolosGrid.php" onclick="changeContent('listaPolosGrid.php')">Polos</a></li>
+                                    <li><a href="listaPolosGridCadastro.php" onclick="changeContent('listaPolosGrid.php')">Polos</a></li>
                                     <li><a href="listaDisciplinasGrid.php" onclick="changeContent('listaDisciplinasGrid.php')">Disciplinas</a></li>
                                     <li><a href="listaTurmasGrid.php" onclick="changeContent('listaTurmasGrid.php')">Turmas</a></li>
                                     <li><a href="listaProfessorGrid.php" onclick="changeContent('listaProfessorGrid.php')">Professores</a></li>

@@ -2,7 +2,7 @@
 include("header.php");
 ?>
 
-<div id="help" class="help">
+<div id="help" class="help" style="margin-left: 5px;">
     
     <legend style="font-weight: bold">Cadastros B&aacute;sicos</legend>
     <p>Para cadastrar as informa&ccedil;&otilde;es que ser&atilde;o necess&aacute;rias no projeto, utilize o menu Cadastros B&aacute;sicos.</p>
