@@ -22,9 +22,8 @@ if ($flag_polo = isset($id)) {
   unset($_GET['id']);
   unset($_POST['id']);
 }
-echo "DELETE FROM polo WHERE id =" . $id_polo;
 
-echo $sql = "SELECT dp.id as id_dep FROM departamento_polo dp WHERE dp.id_polo=" . $id_polo;
+$sql = "SELECT dp.id as id_dep FROM departamento_polo dp WHERE dp.id_polo=" . $id_polo;
 $polo_result = mysqli_query($conn, $sql);
 while ($polo_corrente = mysqli_fetch_assoc($polo_result)) {
   extract($polo_corrente, EXTR_OVERWRITE);
@@ -32,7 +31,7 @@ while ($polo_corrente = mysqli_fetch_assoc($polo_result)) {
   include 'deletarDepartamento.php';
 }
 
-echo $sql = "SELECT id as id_sala FROM sala WHERE id_polo=" . $id_polo;
+$sql = "SELECT id as id_sala FROM sala WHERE id_polo=" . $id_polo;
 $polo_result = mysqli_query($conn, $sql);
 while ($polo_corrente = mysqli_fetch_assoc($polo_result)) {
   extract($polo_corrente, EXTR_OVERWRITE);
@@ -41,11 +40,10 @@ while ($polo_corrente = mysqli_fetch_assoc($polo_result)) {
 }
 
 mysqli_query($conn, "DELETE FROM polo WHERE id =" . $id_polo);
-//echo "DELETE FROM polo WHERE id =" . $id_polo;
 
 
 if ($flag_polo) {
-  saveToPost("Entradas excluídas com sucesso!", "success", "listaDepartamentos");
+  saveToPost("Entradas excluídas com sucesso!", "success", "listaPolos");
   include 'main.php';
 }
 ?>

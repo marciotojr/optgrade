@@ -76,7 +76,10 @@ echo '<fieldset>
     </table>
 </fieldset>
 <?php
-echo '<fieldset>
-        <button type="submit" class="btn btn-primary" onclick="changeContent(\'deletarPolo.php?id=' . $id_polo . '\')">Confirmar Exclusão</button>
+echo '<form method="GET" action="deletarPolo.php">
+    <input type="hidden" name="id" value="' . $id_polo . '">
+    <fieldset>
+        <button type="submit" class="btn btn-primary" >Confirmar Exclusão</button>
+        </form>
     </fieldset>';
 ?>

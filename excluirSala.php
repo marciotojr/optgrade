@@ -70,7 +70,10 @@ if (isset($ver_sala)&&isset($id_aux)) {
   include 'excluirTurma.php';
 }
 if (isset($ver_sala))
-  echo '<fieldset>
-        <button type="submit" class="btn btn-primary" onclick="changeContent(\'deletarSala.php?id=' . $ver_sala . '\')">Confirmar Exclusão</button>
+  echo '<form method="GET" action="deletarSala.php">
+    <input type="hidden" name="id" value="' . $ver_sala . '">
+    <fieldset>
+        <button type="submit" class="btn btn-primary" >Confirmar Exclusão</button>
+        </form>
     </fieldset>';
 ?>

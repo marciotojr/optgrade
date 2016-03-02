@@ -82,7 +82,10 @@ if (isset($ver_dep))
 </fieldset>
 <?php
 if (isset($ver_dep))
-  echo '<fieldset>
-        <button type="submit" class="btn btn-primary" onclick="changeContent(\'deletarDepartamento.php?id=' . $ver_dep . '\')">Confirmar Exclusão</button>
+  echo '<form method="GET" action="deletarDepartamento.php">
+    <input type="hidden" name="id" value="' . $ver_dep . '">
+    <fieldset>
+        <button type="submit" class="btn btn-primary" >Confirmar Exclusão</button>
+        </form>
     </fieldset>';
 ?>

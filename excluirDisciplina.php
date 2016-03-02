@@ -58,16 +58,17 @@ if (isset($ver_disc))
             extract($row, EXTR_OVERWRITE);
             $id_aux[$id] = $id;
           }
-        } 
+        }
         ?>
     </table>
 </fieldset>
 <?php
-if(isset($id_aux))
-include 'excluirTurma.php';
-if (isset($ver_disc)){
-  echo '<fieldset>
-        <button type="submit" class="btn btn-primary" onclick="changeContent(\'deletarDisciplina.php?id=' . $ver_disc . '\')">Confirmar Exclusão</button>
-    </fieldset>';
+if (isset($id_aux))
+  include 'excluirTurma.php';
+if (isset($ver_disc)) {
+  echo '<fieldset><form method="GET" action="deletarDisciplina.php">
+    <input type="hidden" name="id" value="' . $ver_disc . '">
+        <button type="submit" class="btn btn-primary" >Confirmar Exclusão</button>
+    </form></fieldset>';
 }
 ?>

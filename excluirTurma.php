@@ -54,7 +54,9 @@ if (isset($ver_turma))
 </fieldset>
 <?php
 if (isset($ver_turma))
-  echo '<fieldset>
-        <button type="submit" class="btn btn-primary" onclick="changeContent(\'deletarTurma.php?id=' . $id . '\')">Confirmar Exclusão</button>
+  echo '<form method="GET" action="deletarTurma.php">
+    <input type="hidden" name="id" value="' . $ver_turma . '">
+        <button type="submit" class="btn btn-primary" >Confirmar Exclusão</button>
+        </form>
     </fieldset>';
 ?>
